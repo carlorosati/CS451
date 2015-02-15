@@ -1,3 +1,7 @@
+/**
+ * This class represents the Bishop chess piece.
+ */
+
 package main;
 
 import java.awt.Color;

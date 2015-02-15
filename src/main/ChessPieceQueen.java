@@ -1,3 +1,7 @@
+/**
+ * This class represents the Queen chess piece.
+ */
+
 package main;
 
 import java.awt.Color;

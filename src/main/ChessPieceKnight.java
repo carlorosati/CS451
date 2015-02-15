@@ -1,3 +1,7 @@
+/**
+ * This class represents the Knight chess piece.
+ */
+
 package main;
 
 import java.awt.Color;

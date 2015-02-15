@@ -1,3 +1,7 @@
+/**
+ * The ChessBoard interface will be implemented by any class that intends to behave as a chess board object.
+ */
+
 package main;
 
 public interface ChessBoard
