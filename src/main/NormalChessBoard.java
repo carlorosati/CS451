@@ -16,18 +16,19 @@ public class NormalChessBoard implements ChessBoard
 	public NormalChessBoard()
 	{
 		board = new ChessSquare[WIDTH][HEIGHT];
+		initialize();
 	}
 
 	@Override
 	public void initialize()
 	{
-		
-	}
-
-	@Override
-	public void display()
-	{
-
+		for (int i = 0; i < WIDTH; i++)
+		{
+			for (int j = 0; j < HEIGHT; j++)
+			{
+				board[i][j] = new ChessSquare();
+			}
+		}
 	}
 
 	/**
