@@ -48,6 +48,18 @@ public class NormalChessBoard implements ChessBoard
 		board[oldX][oldY].setChessPiece(null);
 		board[x][y].setChessPiece(piece);
 	}
+	
+	@Override
+	public int getWidth()
+	{
+		return WIDTH;
+	}
+	
+	@Override
+	public int getHeight()
+	{
+		return HEIGHT;
+	}
 
 	@Override
 	public ChessSquare getChessSquare(int x, int y)

@@ -17,6 +17,10 @@ public class ChessPieceQueen extends ChessPiece
 	@Override
 	public boolean isMoveValid(ChessBoard board, int x, int y)
 	{
+		if (!super.isMoveValid(board, x, y))
+			return false;
+		
+		//TODO:  FINISH THIS METHOD
 		return false;
 	}
 }

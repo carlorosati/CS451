@@ -11,9 +11,9 @@ import java.awt.Image;
 public abstract class ChessPiece
 {
 	//INSTANCE VARIABLES
-	private Color color;			//Color of the chess piece
-	private Image representation;	//Image representation each chess piece will have on the chess board
-	private int x, y;				//Integer values representing the (x, y) position of the chess square that contains this piece on the chess board
+	protected Color color;			//Color of the chess piece
+	protected Image representation;	//Image representation each chess piece will have on the chess board
+	protected int x, y;				//Integer values representing the (x, y) position of the chess square that contains this piece on the chess board
 	
 	public ChessPiece(Color color, Image representation, int x, int y)
 	{
@@ -62,5 +62,30 @@ public abstract class ChessPiece
 	 * @param y: (attempted) new y position on board
 	 * @return: true or false value depending on whether or not this chess piece can move to position (x, y) on the chess board
 	 */
-	public abstract boolean isMoveValid(ChessBoard board, int x, int y);
+	public boolean isMoveValid(ChessBoard board, int x, int y)
+	{
+		if (x == -999 || y == -999 || (this.x == x && this.y == y))
+			return false;
+		return true;
+		
+		
+		
+		/* TODO: GENERIC PSEUDOCODE FOR ANY PIECE'S MOVE
+		 * 
+		 * foreach tile in path (path is defined as the chess squares the piece must traverse to get to its destination)
+		 *     if (tile is occupied and tile is not the destination tile)
+		 *         return false (basically, continue through the loop as long as the current tile is empty and is not the destination)
+		 *     if (tile is destination tile and tile contains an ALLY piece)
+		 *         return false (if the current tile is the destination tile, we know that the path leading up to this tile is empty since the loop 
+		 *                       checks to make sure of this.  If the destination contains an ally piece (same color piece), we cannot move here)
+		 * return true (we know once we get here that the tiles leading up to the destination tile are empty and that the destination tile itself is 
+		 *              either empty or contains an enemy piece- if the destination tile contains an enemy piece we will capture it and update this 
+		 *              piece's position.  If the destination tile is empty, we will simply update this piece's position since obviously no capture 
+		 *              will be involved in this case)
+		 * 
+		 * 
+		 * 
+		 * 
+		*/
+	}
 }

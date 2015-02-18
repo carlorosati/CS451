@@ -63,7 +63,7 @@ public class GUIChessBoard extends JPanel implements MouseListener
 	{
 		for (int i = 0; i < 8; i++)
 		{
-			if (value > SQUARE_SIZE * i && value < SQUARE_SIZE * (i+1))
+			if (value >= SQUARE_SIZE * i && value < SQUARE_SIZE * (i+1))
 			{
 				return i;
 			}
