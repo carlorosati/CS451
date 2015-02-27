@@ -40,7 +40,7 @@ public class ChessPieceQueen extends ChessPiece
 					path.add(board.getChessSquare(x, i));
 			}
 		}
-		if (this.x != x && this.y == y)
+		else if (this.x != x && this.y == y)
 		{
 			//y is fixed, x is changing
 			//If current x is less than new x, then we know we are moving right
