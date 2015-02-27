@@ -45,6 +45,6 @@ public class ChessGame
 	
 	public static void main(String[] args)
 	{
-		new ChessGame();
+		Player p = new Player(Color.BLACK, "Dude");
 	}
 }

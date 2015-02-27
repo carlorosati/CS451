@@ -91,4 +91,13 @@ public class NormalChessBoard implements ChessBoard, Cloneable
 		//TODO: implement cloning of the board
 		return cb;
 	}
+	public boolean isCheck(Player player) {
+		//find players king and get containing chess sq
+		
+		//loop over opponents pieces and check if they could capture the king
+			// if any can capture return true
+		
+		return false;
+		
+	}
 }
