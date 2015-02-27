@@ -31,7 +31,7 @@ public class ChessPieceKnight extends ChessPiece
 	{
 		List<ChessSquare> path = new ArrayList<>();
 		
-		if (((x == this.x - 2 || x == this.x + 2) && (y == this.y - 1 || y == this.y + 1)) || ((x == this.x - 1 || x == this.x + 1) && (y == this.y - 2 || y == this.y + 2)))
+		if (this.x != x && this.y != y && Math.abs(this.x -x) + Math.abs(this.y - y) == 3)
 			path.add(board.getChessSquare(x, y));
 		
 		validatePath(path, x, y);

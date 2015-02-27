@@ -23,7 +23,7 @@ public class ChessPieceKing extends ChessPiece
 		List<ChessSquare> path = new ArrayList<>();
 		
 		//Kings can only move one square adjacent to their current position at a time
-		if ((x == this.x - 1 || x == this.x || x == this.x + 1) && (y == this.y - 1 || y == this.y || y == this.y + 1))
+		if (Math.abs(this.x - x) <=1 && Math.abs(this.y - y) <= 1)
 			path.add(board.getChessSquare(x, y));
 		
 		validatePath(path, x, y);
