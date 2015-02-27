@@ -30,18 +30,23 @@ public class NormalChessBoard implements ChessBoard, Cloneable
 	public void initialize(Player player)
 	{
 		int turn = 0;
-		int x = 0; int y = 0;
 		//INITIALIZE BOARD
-		for (int i = 0; i < WIDTH; i++, x += ChessSquare.SQUARE_SIZE, y = 0)
+		for (int i = 0; i < WIDTH; i++)
 		{
-			for (int j = 0; j < HEIGHT; j++, y += ChessSquare.SQUARE_SIZE)
+			for (int j = 0; j < HEIGHT; j++)
 			{
 				if (turn++ % 2 == 0)
-					board[i][j] = new ChessSquare(Color.BLACK, x, y);
+					board[i][j] = new ChessSquare(Color.BLACK, i * ChessSquare.SQUARE_SIZE, j * ChessSquare.SQUARE_SIZE);
 				else
-					board[i][j] = new ChessSquare(Color.WHITE, x, y);
+					board[i][j] = new ChessSquare(Color.WHITE, i * ChessSquare.SQUARE_SIZE, j * ChessSquare.SQUARE_SIZE);
 			}
 			turn++;
+		}
+		
+		//INITIALIZE PIECES
+		for (int i = 0; i < 8; i++)
+		{
+			
 		}
 	}
 

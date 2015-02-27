@@ -16,13 +16,20 @@ public abstract class ChessPiece
 	protected Color color;			//Color of the chess piece
 	protected ImageIcon representation;	//Image representation each chess piece will have on the chess board
 	protected int x, y;				//Integer values representing the (x, y) position of the chess square that contains this piece on the chess board
+	protected String rep;
 	
-	public ChessPiece(Color color, ImageIcon representation, int x, int y)
+	public ChessPiece(Color color, ImageIcon representation, int x, int y, String rep)
 	{
 		this.color = color;
 		this.representation = representation;
 		this.x = x;
 		this.y = y;
+		this.rep = rep;
+	}
+	
+	public String getRep()
+	{
+		return rep;
 	}
 	
 	public Color getColor()
@@ -74,7 +81,7 @@ public abstract class ChessPiece
 		
 		for (ChessSquare square : path)
 		{
-			if (!square.isEmpty() && square != path.get(path.size()))
+			if (!square.isEmpty() && square != path.get(path.size() - 1))
 				return false;
 			if (!square.isEmpty() && square.getChessPiece().getColor() == this.color && square == path.get(path.size()))
 				return false;
@@ -98,5 +105,16 @@ public abstract class ChessPiece
 		 */
 	}
 	
-	public abstract void getPath(ChessBoard board, int x, int y);
+	public abstract List<ChessSquare> getPath(ChessBoard board, int x, int y);
+	
+	public boolean move(ChessBoard board, int x, int y)
+	{
+		List<ChessSquare> path = getPath(board, x, y);
+		if (validatePath(path, x, y))
+		{
+			board.update(this, x, y);
+			return true;
+		}
+		return false;
+	}
 }
