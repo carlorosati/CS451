@@ -25,10 +25,37 @@ public class ChessPieceQueen extends ChessPiece
 		//Queens behave as rooks and bishops
 		//CHECK TO SEE IF QUEEN MOVED IN ROOK MOTION
 		if (this.x == x && this.y != y)
-			path = ChessPieceRook.getTiles(board, x, this.y, y);
-		
+		{
+			//x is fixed, y is changing
+			//If current y is less than new y, then we know we are moving down
+			if (this.y < y)
+			{
+				for (int i = this.y; i <= y; i++)
+					path.add(board.getChessSquare(x, i));
+			}
+			//Otherwise we are moving up
+			else
+			{
+				for (int i = this.y; i >= y; i--)
+					path.add(board.getChessSquare(x, i));
+			}
+		}
 		if (this.x != x && this.y == y)
-			path = ChessPieceRook.getTiles(board, y, this.x, x);
+		{
+			//y is fixed, x is changing
+			//If current x is less than new x, then we know we are moving right
+			if (this.x < x)
+			{
+				for (int i = this.x; i <= x; i++)
+					path.add(board.getChessSquare(i, y));
+			}
+			//Otherwise we are moving left
+			else
+			{
+				for (int i = this.y; i >= x; i--)
+					path.add(board.getChessSquare(i, y));
+			}
+		}
 		
 		//CHECK TO SEE IF QUEEN MOVED IN BISHOP MOTION
 		if (Math.abs(this.x - x) == Math.abs(this.y - y))
