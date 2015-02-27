@@ -68,13 +68,13 @@ public class ChessSquare extends JPanel implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-
+		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e)
 	{
-	
+		
 	}
 
 	@Override

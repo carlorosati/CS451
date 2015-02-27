@@ -17,7 +17,7 @@ public class ChessPieceRook extends ChessPiece
 		super(color, representation, x, y);
 	}
 	
-	private List<ChessSquare> getTiles(ChessBoard board, int fixed, int source, int destination)
+	public static List<ChessSquare> getTiles(ChessBoard board, int fixed, int source, int destination)
 	{
 		List<ChessSquare> tiles = new ArrayList<>();
 		
@@ -41,10 +41,10 @@ public class ChessPieceRook extends ChessPiece
 		List<ChessSquare> path = new ArrayList<>();
 		
 		if (this.x == x && this.y != y)
-			path = getTiles(board, x, this.y, y);
+			path = ChessPieceRook.getTiles(board, x, this.y, y);
 		
 		if (this.x != x && this.y == y)
-			path = getTiles(board, y, this.x, x);
+			path = ChessPieceRook.getTiles(board, y, this.x, x);
 		
 		validatePath(path, x, y);
 	}
