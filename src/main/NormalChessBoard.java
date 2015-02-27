@@ -83,7 +83,7 @@ public class NormalChessBoard implements ChessBoard, Cloneable
 	
 	public ChessBoard clone() {
 		ChessBoard cb = new NormalChessBoard();
-		//To Do: implement cloning of the board
+		//TODO: implement cloning of the board
 		return cb;
 	}
 }
