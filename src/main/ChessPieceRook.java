@@ -17,34 +17,43 @@ public class ChessPieceRook extends ChessPiece
 		super(color, representation, x, y);
 	}
 	
-	private List<ChessSquare> getTiles(ChessBoard board, int fixed, int source, int destination)
-	{
-		List<ChessSquare> tiles = new ArrayList<>();
-		
-		if (source > destination)
-		{
-			for (int i = source; i >= destination; i--)
-				tiles.add(board.getChessSquare(fixed, i));
-		}
-		else
-		{
-			for (int i = source; i <= destination; i++)
-				tiles.add(board.getChessSquare(fixed, i));
-		}
-		
-		return tiles;
-	}
-	
 	@Override
 	public void getPath(ChessBoard board, int x, int y)
 	{
 		List<ChessSquare> path = new ArrayList<>();
 		
 		if (this.x == x && this.y != y)
-			path = getTiles(board, x, this.y, y);
-		
+		{
+			//x is fixed, y is changing
+			//If current y is less than new y, then we know we are moving down
+			if (this.y < y)
+			{
+				for (int i = this.y; i <= y; i++)
+					path.add(board.getChessSquare(x, i));
+			}
+			//Otherwise we are moving up
+			else
+			{
+				for (int i = this.y; i >= y; i--)
+					path.add(board.getChessSquare(x, i));
+			}
+		}
 		if (this.x != x && this.y == y)
-			path = getTiles(board, y, this.x, x);
+		{
+			//y is fixed, x is changing
+			//If current x is less than new x, then we know we are moving right
+			if (this.x < x)
+			{
+				for (int i = this.x; i <= x; i++)
+					path.add(board.getChessSquare(i, y));
+			}
+			//Otherwise we are moving left
+			else
+			{
+				for (int i = this.y; i >= x; i--)
+					path.add(board.getChessSquare(i, y));
+			}
+		}
 		
 		validatePath(path, x, y);
 	}

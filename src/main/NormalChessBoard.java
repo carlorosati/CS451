@@ -6,7 +6,7 @@ package main;
 
 import java.awt.Color;
 
-public class NormalChessBoard implements ChessBoard
+public class NormalChessBoard implements ChessBoard, Cloneable
 {
 	/**
 	 * STANDARD JAVA CONVENTION
@@ -79,5 +79,20 @@ public class NormalChessBoard implements ChessBoard
 	public ChessSquare getChessSquare(int x, int y)
 	{
 		return board[x][y];
+	}
+	
+	public ChessBoard clone() {
+		ChessBoard cb = new NormalChessBoard();
+		//TODO: implement cloning of the board
+		return cb;
+	}
+	public boolean isCheck(Player player) {
+		//find players king and get containing chess sq
+		
+		//loop over opponents pieces and check if they could capture the king
+			// if any can capture return true
+		
+		return false;
+		
 	}
 }

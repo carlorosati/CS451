@@ -22,6 +22,10 @@ public class ChessPieceKing extends ChessPiece
 	{
 		List<ChessSquare> path = new ArrayList<>();
 		
+		//Kings can only move one square adjacent to their current position at a time
+		if (Math.abs(this.x - x) <=1 && Math.abs(this.y - y) <= 1)
+			path.add(board.getChessSquare(x, y));
+		
 		validatePath(path, x, y);
 	}
 }
