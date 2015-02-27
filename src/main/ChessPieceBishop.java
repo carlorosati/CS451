@@ -5,22 +5,58 @@
 package main;
 
 import java.awt.Color;
-import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.ImageIcon;
 
 public class ChessPieceBishop extends ChessPiece
 {
-	public ChessPieceBishop(Color color, Image representation, int x, int y)
+	public ChessPieceBishop(Color color, ImageIcon representation, int x, int y)
 	{
 		super(color, representation, x, y);
 	}
-
+	
 	@Override
-	public boolean isMoveValid(ChessBoard board, int x, int y)
+	public void getPath(ChessBoard board, int x, int y)
 	{
-		if (!super.isMoveValid(board, x, y))
-			return false;
+		List<ChessSquare> path = new ArrayList<>();
 		
-		//TODO:  FINISH THIS METHOD
-		return false;
+		if (Math.abs(this.x - x) == Math.abs(this.y - y))
+		{
+			/*We know that this is a valid bishop movement since the absolute values of the differences 
+			  of source and destination of x and y are equal */
+			
+			int i, j;
+			//Bishop moves upper right
+			if (x > this.x && y < this.y)
+			{
+				for (i = this.x, j = this.y; i <= x; i++, j--)
+					path.add(board.getChessSquare(i, j));
+			}
+			
+			//Bishop moves lower right
+			else if (x > this.x && y > this.y)
+			{
+				for (i = this.x, j = this.y; i <= x; i++, j++)
+					path.add(board.getChessSquare(i, j));
+			}
+			
+			//Bishop moves upper left
+			else if (x < this.x && y < this.y)
+			{
+				for (i = this.x, j = this.y; i >= x; i--, j--)
+					path.add(board.getChessSquare(i, j));
+			}
+			
+			//Bishop moves lower left
+			else //if (x < this.x && y > this.y)
+			{
+				for (i = this.x, j = this.y; i >= x; i--, j++)
+					path.add(board.getChessSquare(i, j));
+			}
+		}
+		
+		validatePath(path, x, y);
 	}
 }

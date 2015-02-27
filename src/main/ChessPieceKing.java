@@ -5,22 +5,23 @@
 package main;
 
 import java.awt.Color;
-import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.ImageIcon;
 
 public class ChessPieceKing extends ChessPiece
 {
-	public ChessPieceKing(Color color, Image representation, int x, int y)
+	public ChessPieceKing(Color color, ImageIcon representation, int x, int y)
 	{
 		super(color, representation, x, y);
 	}
-
+	
 	@Override
-	public boolean isMoveValid(ChessBoard board, int x, int y)
+	public void getPath(ChessBoard board, int x, int y)
 	{
-		if (!super.isMoveValid(board, x, y))
-			return false;
+		List<ChessSquare> path = new ArrayList<>();
 		
-		//TODO:  FINISH THIS METHOD
-		return false;
+		validatePath(path, x, y);
 	}
 }

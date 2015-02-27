@@ -5,22 +5,29 @@
 package main;
 
 import java.awt.Color;
-import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.ImageIcon;
 
 public class ChessPiecePawn extends ChessPiece
 {
-	public ChessPiecePawn(Color color, Image representation, int x, int y)
+	public ChessPiecePawn(Color color, ImageIcon representation, int x, int y)
 	{
 		super(color, representation, x, y);
 	}
-
+	
 	@Override
-	public boolean isMoveValid(ChessBoard board, int x, int y)
+	public void getPath(ChessBoard board, int x, int y)
 	{
-		if (!super.isMoveValid(board, x, y))
-			return false;
+		List<ChessSquare> path = new ArrayList<>();
 		
-		//TODO:  FINISH THIS METHOD
-		return false;
+		if (this.x == x && y == this.y-1)
+		{
+			path.add(board.getChessSquare(this.x, this.y));
+			path.add(board.getChessSquare(x, y));
+		}
+		
+		validatePath(path, x, y);
 	}
 }

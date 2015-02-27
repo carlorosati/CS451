@@ -5,11 +5,12 @@ import java.net.Socket;
 
 public class Server {
 	
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args) throws IOException
+	{
 		ServerSocket sock = new ServerSocket(4401);
 		System.out.println("Waiting for socket");
 		Socket clientSock = sock.accept();
-		System.out.println("Recieved Connection");
+		System.out.println("Message received.");
 		
 		sock.close();
 		clientSock.close();

@@ -6,16 +6,18 @@
 package main;
 
 import java.awt.Color;
-import java.awt.Image;
+import java.util.List;
+
+import javax.swing.ImageIcon;
 
 public abstract class ChessPiece
 {
 	//INSTANCE VARIABLES
 	protected Color color;			//Color of the chess piece
-	protected Image representation;	//Image representation each chess piece will have on the chess board
+	protected ImageIcon representation;	//Image representation each chess piece will have on the chess board
 	protected int x, y;				//Integer values representing the (x, y) position of the chess square that contains this piece on the chess board
 	
-	public ChessPiece(Color color, Image representation, int x, int y)
+	public ChessPiece(Color color, ImageIcon representation, int x, int y)
 	{
 		this.color = color;
 		this.representation = representation;
@@ -28,7 +30,7 @@ public abstract class ChessPiece
 		return color;
 	}
 	
-	public Image getRepresentation()
+	public ImageIcon getRepresentation()
 	{
 		return representation;
 	}
@@ -62,12 +64,23 @@ public abstract class ChessPiece
 	 * @param y: (attempted) new y position on board
 	 * @return: true or false value depending on whether or not this chess piece can move to position (x, y) on the chess board
 	 */
-	public boolean isMoveValid(ChessBoard board, int x, int y)
+	public boolean validatePath(List<ChessSquare> path, int x, int y)
 	{
+		if (path.isEmpty())
+			return false;
+		
 		if (x == -999 || y == -999 || (this.x == x && this.y == y))
 			return false;
-		return true;
 		
+		for (ChessSquare square : path)
+		{
+			if (!square.isEmpty() && square != path.get(path.size()))
+				return false;
+			if (!square.isEmpty() && square.getChessPiece().getColor() == this.color && square == path.get(path.size()))
+				return false;
+		}
+		
+		return true;
 		
 		
 		/* TODO: GENERIC PSEUDOCODE FOR ANY PIECE'S MOVE
@@ -82,10 +95,8 @@ public abstract class ChessPiece
 		 *              either empty or contains an enemy piece- if the destination tile contains an enemy piece we will capture it and update this 
 		 *              piece's position.  If the destination tile is empty, we will simply update this piece's position since obviously no capture 
 		 *              will be involved in this case)
-		 * 
-		 * 
-		 * 
-		 * 
-		*/
+		 */
 	}
+	
+	public abstract void getPath(ChessBoard board, int x, int y);
 }

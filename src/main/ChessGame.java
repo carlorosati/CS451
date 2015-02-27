@@ -15,7 +15,8 @@ public class ChessGame
 	{
 		player = new Player(Color.WHITE, "Chris");
 		chessBoard = new NormalChessBoard();
-		guiChessBoard = new GUIChessBoard();
+		chessBoard.initialize(player);
+		guiChessBoard = new GUIChessBoard(chessBoard);
 		initializeGUI();
 		mainLoop();
 	}
@@ -24,12 +25,11 @@ public class ChessGame
 	{
 		JFrame frame = new JFrame("CHESS");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(500,  500);
+		frame.setSize(700,  600);
 		frame.setResizable(false);
 		frame.setVisible(true);
-		
-		GUIChessBoard board = new GUIChessBoard();
-		frame.add(board);
+
+		frame.add(guiChessBoard);
 	}
 	
 	private void mainLoop()

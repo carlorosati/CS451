@@ -5,22 +5,47 @@
 package main;
 
 import java.awt.Color;
-import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.ImageIcon;
 
 public class ChessPieceRook extends ChessPiece
 {
-	public ChessPieceRook(Color color, Image representation, int x, int y)
+	public ChessPieceRook(Color color, ImageIcon representation, int x, int y)
 	{
 		super(color, representation, x, y);
 	}
-
-	@Override
-	public boolean isMoveValid(ChessBoard board, int x, int y)
+	
+	private List<ChessSquare> getTiles(ChessBoard board, int fixed, int source, int destination)
 	{
-		if (!super.isMoveValid(board, x, y))
-			return false;
+		List<ChessSquare> tiles = new ArrayList<>();
 		
-		//TODO:  FINISH THIS METHOD
-		return false;
+		if (source > destination)
+		{
+			for (int i = source; i >= destination; i--)
+				tiles.add(board.getChessSquare(fixed, i));
+		}
+		else
+		{
+			for (int i = source; i <= destination; i++)
+				tiles.add(board.getChessSquare(fixed, i));
+		}
+		
+		return tiles;
+	}
+	
+	@Override
+	public void getPath(ChessBoard board, int x, int y)
+	{
+		List<ChessSquare> path = new ArrayList<>();
+		
+		if (this.x == x && this.y != y)
+			path = getTiles(board, x, this.y, y);
+		
+		if (this.x != x && this.y == y)
+			path = getTiles(board, y, this.x, x);
+		
+		validatePath(path, x, y);
 	}
 }

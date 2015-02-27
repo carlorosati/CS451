@@ -6,17 +6,21 @@
 package main;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Player
 {
 	//INSTANCE VARIABLES
 	private Color color;
 	private String name;
+	private List<ChessPiece> pieces;
 	
 	public Player(Color color, String name)
 	{
 		this.color = color;
 		this.name = name;
+		this.pieces = new ArrayList<>();
 	}
 	
 	public Color getColor()
@@ -27,5 +31,10 @@ public class Player
 	public String getName()
 	{
 		return name;
+	}
+	
+	public void addPieces(ChessPiece piece)
+	{
+		pieces.add(piece);
 	}
 }

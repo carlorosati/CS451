@@ -4,9 +4,9 @@
 
 package main;
 
-public interface ChessBoard
+public interface ChessBoard extends java.io.Serializable
 {
-	public void initialize();
+	public void initialize(Player player);
 	public void update(ChessPiece piece, int x, int y);
 	public int getWidth();
 	public int getHeight();

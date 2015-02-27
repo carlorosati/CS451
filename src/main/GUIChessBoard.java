@@ -13,12 +13,11 @@ public class GUIChessBoard extends JPanel implements MouseListener
 	 * STANDARD JAVA CONVENTION
 	 */
 	private static final long serialVersionUID = 1L;
+	private ChessBoard board;
 	
-	//CONSTANT
-	private static final int SQUARE_SIZE = 48;
-
-	public GUIChessBoard()
+	public GUIChessBoard(ChessBoard board)
 	{
+		this.board = board;
 	}
 
 	@Override
@@ -33,26 +32,16 @@ public class GUIChessBoard extends JPanel implements MouseListener
 	
 	private void drawSquares(Graphics g)
 	{
-		int x = 0; int y = 0; int turn = 0;		//Use the turn variable to determine whether or not the next square drawn should be black or white
-		for (int i = 0; i < 8; i++)
+		int x = 0; int y = 0;
+		for (int i = 0; i < board.getWidth(); i++, x = 0, y += ChessSquare.SQUARE_SIZE)
 		{
-			for (int j = 0; j < 8; j++)
+			for (int j = 0; j < board.getHeight(); j++, x += ChessSquare.SQUARE_SIZE)
 			{
-				//Use this if statement to alternate colors
-				if (turn++ % 2 == 0)
-					g.setColor(Color.BLACK);
-				else
-					g.setColor(Color.WHITE);
-				
-				g.fillRect(x, y, SQUARE_SIZE, SQUARE_SIZE);
-				x += SQUARE_SIZE;	//Increment the x coordinate to the proper location to draw the next square
+				g.setColor(board.getChessSquare(i, j).getColor());
+				g.fillRect(x, y, ChessSquare.SQUARE_SIZE, ChessSquare.SQUARE_SIZE);
 			}
-			turn++;		//Increment turn to ensure that the first square drawn on the new line is the opposite color as the previous square drawn
-			y += SQUARE_SIZE;		//Increment the y coordinate to the proper location to draw the next square on the new line
-			x = 0;		//Set the x coordinate to 0 since we are drawing squares starting on a new line
 		}
 	}
-	
 	
 	/** The logic stored in this method will determine which chess square the user clicked on.  This method uses the x and y values of the user's 
 	 *  last "click" to determine which chess square is accessed.
@@ -63,7 +52,7 @@ public class GUIChessBoard extends JPanel implements MouseListener
 	{
 		for (int i = 0; i < 8; i++)
 		{
-			if (value >= SQUARE_SIZE * i && value < SQUARE_SIZE * (i+1))
+			if (value >= ChessSquare.SQUARE_SIZE * i && value < ChessSquare.SQUARE_SIZE * (i+1))
 			{
 				return i;
 			}
@@ -88,13 +77,11 @@ public class GUIChessBoard extends JPanel implements MouseListener
 		processInput(x, y);
 	}
 
-
 	@Override
 	public void mouseEntered(MouseEvent e) 
 	{
 
 	}
-
 
 	@Override
 	public void mouseExited(MouseEvent e)
@@ -102,13 +89,11 @@ public class GUIChessBoard extends JPanel implements MouseListener
 
 	}
 
-
 	@Override
 	public void mousePressed(MouseEvent e)
 	{
 
 	}
-
 
 	@Override
 	public void mouseReleased(MouseEvent e)

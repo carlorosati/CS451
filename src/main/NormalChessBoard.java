@@ -4,30 +4,44 @@
 
 package main;
 
+import java.awt.Color;
+
 public class NormalChessBoard implements ChessBoard
 {
+	/**
+	 * STANDARD JAVA CONVENTION
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	//CONSTANTS
 	private static final int WIDTH = 8;		//WIDTH OF A NORMAL CHESS BOARD
 	private static final int HEIGHT = 8;	//HEIGHT OF A NORMAL CHESS BOARD
 	
 	//INSTANCE VARIABLES
 	private ChessSquare[][] board;			//Two-dimensional array of chess squares that will make up the board.
+	//TODO:  CREATE A LIST OF CHESS PIECES
 	
 	public NormalChessBoard()
 	{
 		board = new ChessSquare[WIDTH][HEIGHT];
-		initialize();
 	}
 
 	@Override
-	public void initialize()
+	public void initialize(Player player)
 	{
-		for (int i = 0; i < WIDTH; i++)
+		int turn = 0;
+		int x = 0; int y = 0;
+		//INITIALIZE BOARD
+		for (int i = 0; i < WIDTH; i++, x += ChessSquare.SQUARE_SIZE, y = 0)
 		{
-			for (int j = 0; j < HEIGHT; j++)
+			for (int j = 0; j < HEIGHT; j++, y += ChessSquare.SQUARE_SIZE)
 			{
-				board[i][j] = new ChessSquare();
+				if (turn++ % 2 == 0)
+					board[i][j] = new ChessSquare(Color.BLACK, x, y);
+				else
+					board[i][j] = new ChessSquare(Color.WHITE, x, y);
 			}
+			turn++;
 		}
 	}
 
