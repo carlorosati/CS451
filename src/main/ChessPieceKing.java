@@ -14,11 +14,11 @@ public class ChessPieceKing extends ChessPiece
 {
 	public ChessPieceKing(Color color, ImageIcon representation, int x, int y)
 	{
-		super(color, representation, x, y);
+		super(color, representation, x, y, "X");
 	}
 	
 	@Override
-	public void getPath(ChessBoard board, int x, int y)
+	public List<ChessSquare> getPath(ChessBoard board, int x, int y)
 	{
 		List<ChessSquare> path = new ArrayList<>();
 		
@@ -26,6 +26,6 @@ public class ChessPieceKing extends ChessPiece
 		if (Math.abs(this.x - x) <=1 && Math.abs(this.y - y) <= 1)
 			path.add(board.getChessSquare(x, y));
 		
-		validatePath(path, x, y);
+		return path;
 	}
 }

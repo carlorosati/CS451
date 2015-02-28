@@ -14,11 +14,11 @@ public class ChessPiecePawn extends ChessPiece
 {
 	public ChessPiecePawn(Color color, ImageIcon representation, int x, int y)
 	{
-		super(color, representation, x, y);
+		super(color, representation, x, y, "P");
 	}
 	
 	@Override
-	public void getPath(ChessBoard board, int x, int y)
+	public List<ChessSquare> getPath(ChessBoard board, int x, int y)
 	{
 		List<ChessSquare> path = new ArrayList<>();
 		
@@ -28,6 +28,6 @@ public class ChessPiecePawn extends ChessPiece
 			path.add(board.getChessSquare(x, y));
 		}
 		
-		validatePath(path, x, y);
+		return path;
 	}
 }

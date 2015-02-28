@@ -14,11 +14,11 @@ public class ChessPieceBishop extends ChessPiece
 {
 	public ChessPieceBishop(Color color, ImageIcon representation, int x, int y)
 	{
-		super(color, representation, x, y);
+		super(color, representation, x, y, "B");
 	}
 	
 	@Override
-	public void getPath(ChessBoard board, int x, int y)
+	public List<ChessSquare> getPath(ChessBoard board, int x, int y)
 	{
 		List<ChessSquare> path = new ArrayList<>();
 		
@@ -31,32 +31,32 @@ public class ChessPieceBishop extends ChessPiece
 			//Bishop moves upper right
 			if (x > this.x && y < this.y)
 			{
-				for (i = this.x, j = this.y; i <= x; i++, j--)
+				for (i = this.x + 1, j = this.y - 1; i <= x; i++, j--)
 					path.add(board.getChessSquare(i, j));
 			}
 			
 			//Bishop moves lower right
 			else if (x > this.x && y > this.y)
 			{
-				for (i = this.x, j = this.y; i <= x; i++, j++)
+				for (i = this.x + 1, j = this.y + 1; i <= x; i++, j++)
 					path.add(board.getChessSquare(i, j));
 			}
 			
 			//Bishop moves upper left
 			else if (x < this.x && y < this.y)
 			{
-				for (i = this.x, j = this.y; i >= x; i--, j--)
+				for (i = this.x - 1, j = this.y - 1; i >= x; i--, j--)
 					path.add(board.getChessSquare(i, j));
 			}
 			
 			//Bishop moves lower left
 			else //if (x < this.x && y > this.y)
 			{
-				for (i = this.x, j = this.y; i >= x; i--, j++)
+				for (i = this.x - 1, j = this.y + 1; i >= x; i--, j++)
 					path.add(board.getChessSquare(i, j));
 			}
 		}
 		
-		validatePath(path, x, y);
+		return path;
 	}
 }
