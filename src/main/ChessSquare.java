@@ -7,10 +7,11 @@ package main;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.Serializable;
 
 import javax.swing.JPanel;
 
-public class ChessSquare extends JPanel implements MouseListener
+public class ChessSquare extends JPanel implements MouseListener, Serializable
 {
 	/**
 	 * STANDARD JAVA CONVENTION

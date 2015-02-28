@@ -1,5 +1,7 @@
 package main;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -7,12 +9,37 @@ public class Server {
 	
 	public static void main(String[] args) throws IOException
 	{
-		ServerSocket sock = new ServerSocket(4401);
-		System.out.println("Waiting for socket");
-		Socket clientSock = sock.accept();
-		System.out.println("Message received.");
 		
-		sock.close();
-		clientSock.close();
+		// Listen on port for connections
+		int portNumber = 4401;
+		try (
+				// Open the server socket
+				ServerSocket serverSocket = new ServerSocket( portNumber );
+				
+				// Connect the client
+				Socket clientSocket = serverSocket.accept();
+		
+				// Create an object output stream
+				ObjectOutputStream out =
+						new ObjectOutputStream( clientSocket.getOutputStream() );
+				
+				// Create an object input stream
+				ObjectInputStream in =
+						new ObjectInputStream( clientSocket.getInputStream() );
+		) {
+			// Server stop listening for connections
+			serverSocket.close();
+			
+			// Read a chess board from the client
+			ChessBoard cb = (ChessBoard) in.readObject();
+			
+			// Close the client socket
+			clientSocket.close();
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

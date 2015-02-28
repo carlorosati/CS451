@@ -6,12 +6,18 @@
 package main;
 
 import java.awt.Color;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.swing.ImageIcon;
 
-public abstract class ChessPiece
+public abstract class ChessPiece implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	//INSTANCE VARIABLES
 	protected Color color;			//Color of the chess piece
 	protected ImageIcon representation;	//Image representation each chess piece will have on the chess board

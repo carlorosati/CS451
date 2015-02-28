@@ -5,8 +5,9 @@
 package main;
 
 import java.awt.Color;
+import java.io.Serializable;
 
-public class NormalChessBoard implements ChessBoard, Cloneable
+public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 {
 	/**
 	 * STANDARD JAVA CONVENTION
