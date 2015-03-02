@@ -20,19 +20,7 @@ public class ChessGame
 		chessBoard = new NormalChessBoard();
 		chessBoard.initialize(player);
 		guiChessBoard = new GUIChessBoard(chessBoard);
-		initializeGUI();
 		mainLoop();
-	}
-	
-	private void initializeGUI()
-	{
-		JFrame frame = new JFrame("CHESS");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(700,  600);
-		frame.setResizable(false);
-		frame.setVisible(true);
-
-		frame.add(guiChessBoard);
 	}
 	
 	private void mainLoop()
@@ -56,8 +44,10 @@ public class ChessGame
 	
 	public static void main(String[] args) throws IOException
 	{
-		ConnectionScreen myScreen = new ConnectionScreen();
-		myScreen.setVisible(true);
+		//ConnectionScreen myScreen = new ConnectionScreen();
+		//myScreen.setVisible(true);
+		ChessGame var = new ChessGame(Color.white);
+		var.getGUI().setVisible(true);
 		//Player p = new Player(Color.BLACK, "Dude");
 	}
 }
