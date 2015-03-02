@@ -115,11 +115,21 @@ public abstract class ChessPiece implements Serializable
 	
 	public boolean move(ChessBoard board, int x, int y)
 	{
+		int oldx = getX();
+		int oldy = getY();
 		List<ChessSquare> path = getPath(board, x, y);
 		if (validatePath(path, x, y))
 		{
+			ChessPiece p = board.getChessSquare(x, y).getChessPiece();
 			board.update(this, x, y);
-			return true;
+			if(!board.isCheck(this.getColor()))
+				return true;
+			else {
+				board.update(this,oldx,oldy);
+				if(p!=null)
+					board.update(p, p.getX(), p.getY());
+				return false;
+			}
 		}
 		return false;
 	}

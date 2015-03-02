@@ -32,8 +32,13 @@ public class TestConsole
 		board.initialize(player);
 		TestConsole.drawBoard(board);
 		
-		ChessPiece pawn = new ChessPiecePawn(Color.WHITE, new ImageIcon(), 4, 4);
-		board.update(pawn, 4, 4);
+		ChessPiece br = new ChessPieceRook(Color.BLACK, new ImageIcon(), 4, 4);
+		board.update(br, br.getX(), br.getY());
+		ChessPiece wr = new ChessPieceRook(Color.WHITE, new ImageIcon(), 0, 4);
+		board.update(wr, wr.getX(), wr.getY());
+		ChessPiece bk = new ChessPieceKing(Color.BLACK, new ImageIcon(), 7, 4);
+		board.update(bk, bk.getX(), bk.getY());
+		
 		TestConsole.drawBoard(board);
 		
 		Scanner scan = new Scanner(System.in);

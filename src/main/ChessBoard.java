@@ -4,6 +4,8 @@
 
 package main;
 
+import java.awt.Color;
+
 public interface ChessBoard extends java.io.Serializable
 {
 	public void initialize(Player player);
@@ -11,4 +13,5 @@ public interface ChessBoard extends java.io.Serializable
 	public int getWidth();
 	public int getHeight();
 	public ChessSquare getChessSquare(int x, int y);
+	public boolean isCheck(Color c);
 }
