@@ -101,7 +101,7 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 		for(int i=0;i<WIDTH;i++){
 			for(int j=0;j<HEIGHT;j++) {
 				ChessSquare cs = getChessSquare(i, j);
-				if(!cs.isEmpty() && cs.getChessPiece() instanceof ChessPieceKing) {
+				if(!cs.isEmpty() && cs.getChessPiece() instanceof ChessPieceKing&& cs.getChessPiece().getColor()==c) {
 					king = cs.getChessPiece();
 					i=WIDTH;
 					j=HEIGHT;

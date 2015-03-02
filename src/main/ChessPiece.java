@@ -126,7 +126,7 @@ public abstract class ChessPiece implements Serializable
 		{
 			ChessPiece p = board.getChessSquare(x, y).getChessPiece();
 			board.update(this, x, y);
-			if(!board.isCheck(this.getColor()))
+			if(!board.isCheck(getColor()))
 				return true;
 			else {
 				board.update(this,oldx,oldy);

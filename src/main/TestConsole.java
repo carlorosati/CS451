@@ -33,6 +33,11 @@ public class TestConsole
 		board.initialize(player);
 		TestConsole.drawBoard(board);
 		
+		for(int i=0;i<8;i++){
+			ChessPiece bp = new ChessPiecePawn(Color.BLACK, new ImageIcon(), 1, i);
+			board.update(bp, bp.getX(), bp.getY());
+		}
+		
 		ChessPiece br1 = new ChessPieceRook(Color.BLACK, new ImageIcon(), 0, 0);
 		board.update(br1, br1.getX(), br1.getY());
 		
@@ -58,6 +63,10 @@ public class TestConsole
 		board.update(bq, bq.getX(), bq.getY());
 		
 		//white pieces
+		for(int i=0;i<8;i++){
+			ChessPiece wp = new ChessPiecePawn(Color.WHITE, new ImageIcon(), 6, i);
+			board.update(wp, wp.getX(), wp.getY());
+		}
 		ChessPiece wr1 = new ChessPieceRook(Color.WHITE, new ImageIcon(), 7, 0);
 		board.update(wr1, wr1.getX(), wr1.getY());
 		
@@ -90,6 +99,7 @@ public class TestConsole
 		
 		Scanner scan = new Scanner(System.in);
 		boolean validMove;
+		int count=0;
 		do
 		{
 			int oldX = scan.nextInt();
@@ -100,8 +110,10 @@ public class TestConsole
 			
 			validMove = board.getChessSquare(oldX, oldY).getChessPiece().move(board, newX, newY);
 			System.out.println(validMove);
-			
-		} while (!validMove);
+			if(validMove)
+				count++;
+			TestConsole.drawBoard(board);
+		} while (count<10);
 		
 		TestConsole.drawBoard(board);
 		
