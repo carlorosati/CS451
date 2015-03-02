@@ -98,13 +98,13 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 	public boolean isCheck(Color c) {
 		ChessPiece king = null;
 		ChessPiece opponentPiece=null;
-		for(int i=0;i<HEIGHT;i++){
-			for(int j=0;j<WIDTH;j++) {
+		for(int i=0;i<WIDTH;i++){
+			for(int j=0;j<HEIGHT;j++) {
 				ChessSquare cs = getChessSquare(i, j);
 				if(!cs.isEmpty() && cs.getChessPiece() instanceof ChessPieceKing) {
 					king = cs.getChessPiece();
-					i=HEIGHT;
-					j=WIDTH;
+					i=WIDTH;
+					j=HEIGHT;
 				}
 			}
 		}
@@ -112,12 +112,13 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 		
 		
 		//loop over opponents pieces and check if they could capture the king
-		for(int i=0;i<HEIGHT;i++){
-			for(int j=0;j<WIDTH;j++) {
+		for(int i=0;i<WIDTH;i++){
+			for(int j=0;j<HEIGHT;j++) {
 				ChessSquare cs = getChessSquare(i, j);
 				if(!cs.isEmpty()){
 					opponentPiece=cs.getChessPiece();
 					List<ChessSquare> path = opponentPiece.getPath(this, king.getX(), king.getY());
+					System.out.println(path);
 					if(opponentPiece.validatePath(path, king.getX(), king.getY())) {
 						System.out.println("("+opponentPiece.getX()+","+opponentPiece.getY()+") can take king");	
 						return true;
