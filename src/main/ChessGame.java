@@ -14,9 +14,9 @@ public class ChessGame
 	private GUIChessBoard guiChessBoard;	//How the chess board will be displayed to the user
 	private Socket peerSocket;
 	
-	public ChessGame()
+	public ChessGame(Color color)
 	{
-		player = new Player(Color.WHITE, "Chris");
+		player = new Player(color, "Chris");
 		chessBoard = new NormalChessBoard();
 		chessBoard.initialize(player);
 		guiChessBoard = new GUIChessBoard(chessBoard);

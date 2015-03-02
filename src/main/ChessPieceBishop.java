@@ -12,6 +12,11 @@ import javax.swing.ImageIcon;
 
 public class ChessPieceBishop extends ChessPiece
 {
+	/**
+	 * STANDARD JAVA CONVENTION
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public ChessPieceBishop(Color color, ImageIcon representation, int x, int y)
 	{
 		super(color, representation, x, y, "B");

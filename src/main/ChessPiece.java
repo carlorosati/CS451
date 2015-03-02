@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 public abstract class ChessPiece implements Serializable
 {
 	/**
-	 * 
+	 * STANDARD JAVA CONVENTION
 	 */
 	private static final long serialVersionUID = 1L;
 	
