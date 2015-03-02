@@ -59,7 +59,7 @@ public class ConnectionScreen extends JFrame implements ActionListener, MouseLis
 		gamePanel.add(hostLabel);
 		gamePanel.add(hostField);
 		
-		game = new ChessGame();
+		game = new ChessGame(Color.WHITE);
 		game.getGUI().setVisible(false);
 	}
 
