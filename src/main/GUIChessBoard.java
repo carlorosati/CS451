@@ -64,8 +64,9 @@ public class GUIChessBoard extends JPanel implements MouseListener
 	{
 		if (x == -999 || y == -999)
 			System.out.println("  INVALID INPUT AT (" + x + ", " + y + ")\n");
-		else
+		else{
 			System.out.println("Clicked on chess square:  (" + x + ", " + y + ")");
+		}
 	}
 
 	@Override

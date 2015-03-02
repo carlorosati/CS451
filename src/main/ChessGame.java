@@ -1,6 +1,8 @@
 package main;
 
 import java.awt.Color;
+import java.io.IOException;
+import java.net.Socket;
 
 import javax.swing.JFrame;
 
@@ -10,6 +12,7 @@ public class ChessGame
 	private Player player;					//Variable representing the player object
 	private ChessBoard chessBoard;			//Internal chess board structure
 	private GUIChessBoard guiChessBoard;	//How the chess board will be displayed to the user
+	private Socket peerSocket;
 	
 	public ChessGame(Color color)
 	{
@@ -37,14 +40,24 @@ public class ChessGame
 		
 	}
 	
+	public GUIChessBoard getGUI(){
+		return guiChessBoard;
+	}
+	
+	public void SetSocket(Socket newSocket){
+		peerSocket = newSocket;
+	}
+	
 	/** PROTOTYPE METHOD */
 	public boolean isOver()
 	{
 		return false;
 	}
 	
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException
 	{
-		Player p = new Player(Color.BLACK, "Dude");
+		ConnectionScreen myScreen = new ConnectionScreen();
+		myScreen.setVisible(true);
+		//Player p = new Player(Color.BLACK, "Dude");
 	}
 }
