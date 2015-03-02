@@ -35,7 +35,11 @@ public abstract class ChessPiece implements Serializable
 	
 	public String getRep()
 	{
-		return rep;
+		if(this.getColor()==Color.BLACK)
+			return rep;
+		else
+			return rep.toLowerCase();
+		
 	}
 	
 	public Color getColor()

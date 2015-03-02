@@ -118,7 +118,6 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 				if(!cs.isEmpty()){
 					opponentPiece=cs.getChessPiece();
 					List<ChessSquare> path = opponentPiece.getPath(this, king.getX(), king.getY());
-					System.out.println(path);
 					if(opponentPiece.validatePath(path, king.getX(), king.getY())) {
 						System.out.println("("+opponentPiece.getX()+","+opponentPiece.getY()+") can take king");	
 						return true;
