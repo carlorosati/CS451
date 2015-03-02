@@ -11,9 +11,9 @@ public class ChessGame
 	private ChessBoard chessBoard;			//Internal chess board structure
 	private GUIChessBoard guiChessBoard;	//How the chess board will be displayed to the user
 	
-	public ChessGame()
+	public ChessGame(Color color)
 	{
-		player = new Player(Color.WHITE, "Chris");
+		player = new Player(color, "Chris");
 		chessBoard = new NormalChessBoard();
 		chessBoard.initialize(player);
 		guiChessBoard = new GUIChessBoard(chessBoard);
