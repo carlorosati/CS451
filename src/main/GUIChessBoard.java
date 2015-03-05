@@ -1,13 +1,10 @@
 package main;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.*;
-import javax.swing.table.*;
 
 public class GUIChessBoard extends JFrame implements MouseListener
 {
@@ -16,36 +13,26 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	 */
 	private static final long serialVersionUID = 1L;
 	private ChessBoard board;
-	private JTable table;
 	private JButton[][] guiBoardButtons;
 	
 	public GUIChessBoard(ChessBoard board)
 	{
 		this.board = board;
+		this.setLayout(new GridLayout(8,8));
 		
 		guiBoardButtons = new JButton[8][8];
 		for(int x = 0; x < 8; x++){
 			for(int y = 0; y < 8; y++){
 				guiBoardButtons[x][y] = new JButton("Insert Chess Piece Here");
 				guiBoardButtons[x][y].setBackground(board.getChessSquare(x, y).getColor());
+				guiBoardButtons[x][y].addMouseListener(this);
+				if(this.board.getChessSquare(x, y).getChessPiece() != null && this.board.getChessSquare(x,y).getChessPiece().getRepresentation() != null){
+					guiBoardButtons[x][y].setIcon(this.board.getChessSquare(x, y).getChessPiece().getRepresentation());
+				}
+				add(guiBoardButtons[x][y]);
 			}
 		}
-	      
-		TableModel dataModel = new AbstractTableModel() {
-			public int getColumnCount() { return 8; }
-	          public int getRowCount() { return 8;}
-	          public Object getValueAt(int row, int col) { return guiBoardButtons[row][col]; }
-	     };
-		
-	     table = new JTable(dataModel){
-    	    public TableCellRenderer getCellRenderer( int row, int column ) {
-    	        return new JButtonTableRenderer();
-    	    }
-	    };
 
-		
-		table.addMouseListener(this);
-		add(table);
 		setSize(800,800);
 	}
 
@@ -67,10 +54,14 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-		int x = table.getSelectedColumn();
-		int y = table.getSelectedRow();
+		for(int x = 0; x < 8; x++){
+			for(int y = 0; y < 8; y++){
+				if(e.getSource() == guiBoardButtons[x][y]){
+					processInput(x,y);
+				}
+			}
+		}
 		
-		processInput(x, y);
 	}
 
 	@Override
