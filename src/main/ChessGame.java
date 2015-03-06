@@ -31,21 +31,19 @@ public class ChessGame implements Runnable
 			ObjectInputStream in = new ObjectInputStream(peerSocket.getInputStream());
 			System.out.println("ML called");
 			while(!isOver()){
-				if(chessBoard.getCurrent()==guiChessBoard.getPlayerColor()){
+				if(chessBoard.getCurrent().equals(guiChessBoard.getPlayerColor())){
 					//System.out.println("your turn");
 					if (guiChessBoard.getMoved()){
 						System.out.println("move made");
-						chessBoard.setCurrent(chessBoard.getCurrent()==Color.BLACK?Color.WHITE:Color.BLACK);
-						ObjectOutputStream out = new ObjectOutputStream(peerSocket.getOutputStream());
+						chessBoard.setCurrent(chessBoard.getCurrent().equals(Color.BLACK) ? Color.WHITE:Color.BLACK);
 						out.writeObject(chessBoard);
 					}
 				} else {
 					System.out.println("Waiting for opponent turn");
-					ObjectInputStream in = new ObjectInputStream(peerSocket.getInputStream());
 					chessBoard = (ChessBoard) in.readObject();
 					System.out.println("after");
 					guiChessBoard.setBoard(chessBoard);
-					//chessBoard.setCurrent(chessBoard.getCurrent()==Color.BLACK?Color.WHITE:Color.BLACK);
+					chessBoard.setCurrent(chessBoard.getCurrent().equals(Color.BLACK)?Color.WHITE:Color.BLACK);
 				}	
 			}
 		}catch(Exception e) {
@@ -79,6 +77,5 @@ public class ChessGame implements Runnable
 	@Override
 	public void run() {
 		mainLoop();
-		
 	}
 }

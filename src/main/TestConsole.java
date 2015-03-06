@@ -34,7 +34,7 @@ public class TestConsole
 		GUIChessBoard gui = new GUIChessBoard(board);
 		gui.show();
 		TestConsole.drawBoard(board);
-		gui.update();
+		gui.updateBoard();
 		
 		Scanner scan = new Scanner(System.in);
 		boolean validMove;
@@ -52,7 +52,7 @@ public class TestConsole
 			if(validMove)
 				count++;
 			TestConsole.drawBoard(board);
-			gui.update();
+			gui.updateBoard();
 		} while (count<10);
 		
 		TestConsole.drawBoard(board);
