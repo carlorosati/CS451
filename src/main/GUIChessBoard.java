@@ -15,6 +15,8 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	private static final long serialVersionUID = 1L;
 	private ChessBoard board;
 	private JButton[][] guiBoardButtons;
+	private boolean firstClick = true;
+	private int x,y;
 	
 	public GUIChessBoard(ChessBoard board)
 	{
@@ -25,8 +27,16 @@ public class GUIChessBoard extends JFrame implements MouseListener
 		guiBoardButtons = new JButton[8][8];
 		for(int y = 0; y < 8; y++){
 			for(int x = 0; x < 8; x++){
+				//Get internal representation
+				ChessSquare sq = board.getChessSquare(x, y);
+				ChessPiece pc = sq.getChessPiece();
+				
+				//Create GUI Representation
 				guiBoardButtons[x][y] = new JButton();
-				guiBoardButtons[x][y].setBackground(board.getChessSquare(x, y).getColor());
+				guiBoardButtons[x][y].setBackground(sq.getColor());
+				if(pc != null){
+					guiBoardButtons[x][y].setIcon(pc.getRepresentation());
+				}
 				guiBoardButtons[x][y].addMouseListener(this);
 				add(guiBoardButtons[x][y]);
 			}
@@ -43,10 +53,35 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	 */
 	public void processInput(int x, int y)
 	{
-		if (x == -999 || y == -999)
-			System.out.println("  INVALID INPUT AT (" + x + ", " + y + ")\n");
-		else{
-			System.out.println("Clicked on chess square:  (" + x + ", " + y + ")");
+		
+		ChessSquare sq = board.getChessSquare(x, y);
+		ChessPiece pc = sq.getChessPiece();
+		
+		if(pc != null){
+			System.out.println("Clicked on " + pc.getClass().getSimpleName() + ": (" + x + ", " + y + ")");
+		}else{
+			System.out.println("Clicked on empty chess square:  (" + x + ", " + y + ")");
+		}
+		
+		if(firstClick){
+			if(pc != null){
+				firstClick = false;
+				this.x = x;
+				this.y = y;
+				
+				System.out.println("Clicking on first piece");
+			}
+		}else{
+			firstClick = true;
+			ChessPiece origPiece = board.getChessSquare(this.x, this.y).getChessPiece();
+			boolean validMove = origPiece.move(board, x, y);
+			if(validMove){
+				System.out.println(origPiece.getClass().getSimpleName() + " can move to (" + x + ", " + y + ")");
+			}else{
+				System.out.println(origPiece.getClass().getSimpleName() + " can't move to (" + x + ", " + y + ")");
+			}
+			
+			updateBoard();
 		}
 	}
 
@@ -60,7 +95,22 @@ public class GUIChessBoard extends JFrame implements MouseListener
 				}
 			}
 		}
-		
+	}
+	
+	public void updateBoard(){
+		for(int y = 0; y < 8; y++){
+			for(int x = 0; x < 8; x++){
+				//Get internal representation
+				ChessSquare sq = board.getChessSquare(x, y);
+				ChessPiece pc = sq.getChessPiece();
+				
+				if(pc != null){
+					guiBoardButtons[x][y].setIcon(pc.getRepresentation());
+				}else{
+					guiBoardButtons[x][y].setIcon(null);
+				}
+			}
+		}
 	}
 
 	@Override
@@ -86,6 +136,7 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	{
 
 	}
+	
 	public void update() {
 		for (int i=0; i<8; i++) {
 			for (int j=0; j<8; j++) {
