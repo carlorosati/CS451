@@ -4,10 +4,9 @@ import java.awt.Color;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.net.Socket;
 
-public class ChessGame
+public class ChessGame implements Runnable
 {
 	//INSTANCE VARIABLES	
 	private Player player;					//Variable representing the player object
@@ -71,5 +70,11 @@ public class ChessGame
 		//		ChessGame var = new ChessGame(Color.white);
 		//		var.getGUI().setVisible(true);
 		//Player p = new Player(Color.BLACK, "Dude");
+	}
+
+	@Override
+	public void run() {
+		mainLoop();
+		
 	}
 }
