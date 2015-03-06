@@ -23,55 +23,11 @@ public class GUIChessBoard extends JFrame implements MouseListener
 		
 		//Prepare guibuttons on board
 		guiBoardButtons = new JButton[8][8];
-		for(int x = 0; x < 8; x++){
-			for(int y = 0; y < 8; y++){
+		for(int y = 0; y < 8; y++){
+			for(int x = 0; x < 8; x++){
 				guiBoardButtons[x][y] = new JButton();
 				guiBoardButtons[x][y].setBackground(board.getChessSquare(x, y).getColor());
 				guiBoardButtons[x][y].addMouseListener(this);
-				
-				//Conditional for starting line up
-				//Setting the Pawn
-				if (y == 1){
-					this.board.getChessSquare(x,y).setChessPiece(new ChessPiecePawn(Color.BLACK, null, x, y));
-					//guiBoardButtons[x][y].setIcon(this.board.getChessSquare(new ChessPiecePawn(Color.BLACK, null, x, y))
-				}else if(y == 6){
-					this.board.getChessSquare(x,y).setChessPiece(new ChessPiecePawn(Color.WHITE, null, x, y));
-				//Every piece but the pawn
-				}else if(y == 0 || y == 7){
-					Color color; 
-					if(y == 0){
-						color = Color.BLACK;
-					}else{
-						color = Color.WHITE;
-					}
-					
-					//Setting the Rook
-					if (x == 0 || x == 7){
-						this.board.getChessSquare(x,y).setChessPiece(new ChessPieceRook(color, null, x, y));
-					
-					//Setting the Knight
-					}else if(x == 1 || x == 6){
-						this.board.getChessSquare(x,y).setChessPiece(new ChessPieceKnight(color, null, x, y));
-					
-					//Setting the Bishop
-					}else if(x == 2 || x == 5){
-						this.board.getChessSquare(x,y).setChessPiece(new ChessPieceBishop(color, null, x, y));
-					
-					//Setting the Queen
-					}else if(x == 3){
-						this.board.getChessSquare(x,y).setChessPiece(new ChessPieceKing(color, null, x, y));
-					
-					//Setting the King
-					}else if(x == 4){
-						this.board.getChessSquare(x,y).setChessPiece(new ChessPieceQueen(color, null, x, y));
-					}
-					
-					guiBoardButtons[x][y].setIcon(this.board.getChessSquare(x, y).getChessPiece().getRepresentation());
-				}
-				
-				if(this.board.getChessSquare(x, y).getChessPiece() != null && this.board.getChessSquare(x,y).getChessPiece().getRepresentation() != null){
-					guiBoardButtons[x][y].setIcon(this.board.getChessSquare(x, y).getChessPiece().getRepresentation());
-				}
 				add(guiBoardButtons[x][y]);
 			}
 		}
@@ -129,5 +85,16 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	public void mouseReleased(MouseEvent e)
 	{
 
+	}
+	public void update() {
+		for (int i=0; i<8; i++) {
+			for (int j=0; j<8; j++) {
+				if (this.board.getChessSquare(i, j).isEmpty())
+					this.guiBoardButtons[i][j].setIcon(null);
+				else
+					this.guiBoardButtons[i][j].setIcon(this.board.getChessSquare(i, j).getChessPiece().getRepresentation());
+			}
+				
+		}
 	}
 }

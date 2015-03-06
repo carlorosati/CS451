@@ -31,71 +31,10 @@ public class TestConsole
 		ChessBoard board = new NormalChessBoard();
 		Player player = new Player(Color.WHITE, "Chris");
 		board.initialize(player);
+		GUIChessBoard gui = new GUIChessBoard(board);
+		gui.show();
 		TestConsole.drawBoard(board);
-		
-		for(int i=0;i<8;i++){
-			ChessPiece bp = new ChessPiecePawn(Color.BLACK, new ImageIcon(), 1, i);
-			board.update(bp, bp.getX(), bp.getY());
-		}
-		
-		ChessPiece br1 = new ChessPieceRook(Color.BLACK, new ImageIcon(), 0, 0);
-		board.update(br1, br1.getX(), br1.getY());
-		
-		ChessPiece br2 = new ChessPieceRook(Color.BLACK, new ImageIcon(), 0, 7);
-		board.update(br2, br2.getX(), br2.getY());
-		
-		ChessPiece bb1 = new ChessPieceBishop(Color.BLACK, new ImageIcon(), 0, 2);
-		board.update(bb1, bb1.getX(), bb1.getY());
-		
-		ChessPiece bb2 = new ChessPieceBishop(Color.BLACK, new ImageIcon(), 0, 5);
-		board.update(bb2, bb2.getX(), bb2.getY());
-		
-		ChessPiece bk1 = new ChessPieceKnight(Color.BLACK, new ImageIcon(), 0, 1);
-		board.update(bk1, bk1.getX(), bk1.getY());
-		
-		ChessPiece bk2 = new ChessPieceKnight(Color.BLACK, new ImageIcon(), 0, 6);
-		board.update(bk2, bk2.getX(), bk2.getY());
-		
-		ChessPiece bking = new ChessPieceKing(Color.BLACK, new ImageIcon(), 0, 4);
-		board.update(bking, bking.getX(), bking.getY());
-		
-		ChessPiece bq = new ChessPieceQueen(Color.BLACK, new ImageIcon(), 0, 3);
-		board.update(bq, bq.getX(), bq.getY());
-		
-		//white pieces
-		for(int i=0;i<8;i++){
-			ChessPiece wp = new ChessPiecePawn(Color.WHITE, new ImageIcon(), 6, i);
-			board.update(wp, wp.getX(), wp.getY());
-		}
-		ChessPiece wr1 = new ChessPieceRook(Color.WHITE, new ImageIcon(), 7, 0);
-		board.update(wr1, wr1.getX(), wr1.getY());
-		
-		ChessPiece wr2 = new ChessPieceRook(Color.WHITE, new ImageIcon(), 7, 7);
-		board.update(wr2, wr2.getX(), wr2.getY());
-		
-		ChessPiece wb1 = new ChessPieceBishop(Color.WHITE, new ImageIcon(), 7, 2);
-		board.update(wb1, wb1.getX(), wb1.getY());
-		
-		ChessPiece wb2 = new ChessPieceBishop(Color.WHITE, new ImageIcon(), 7, 5);
-		board.update(wb2, wb2.getX(), wb2.getY());
-		
-		ChessPiece wk1 = new ChessPieceKnight(Color.WHITE, new ImageIcon(), 7, 1);
-		board.update(wk1, wk1.getX(), wk1.getY());
-		
-		ChessPiece wk2 = new ChessPieceKnight(Color.WHITE, new ImageIcon(), 7, 6);
-		board.update(wk2, wk2.getX(), wk2.getY());
-		
-		ChessPiece wking = new ChessPieceKing(Color.WHITE, new ImageIcon(), 7, 3);
-		board.update(wking, wking.getX(), wking.getY());
-		
-		ChessPiece wq = new ChessPieceQueen(Color.WHITE, new ImageIcon(), 7, 4);
-		board.update(wq, wq.getX(), wq.getY());
-		
-		
-		
-		
-		
-		TestConsole.drawBoard(board);
+		gui.update();
 		
 		Scanner scan = new Scanner(System.in);
 		boolean validMove;
@@ -113,6 +52,7 @@ public class TestConsole
 			if(validMove)
 				count++;
 			TestConsole.drawBoard(board);
+			gui.update();
 		} while (count<10);
 		
 		TestConsole.drawBoard(board);
