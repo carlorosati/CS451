@@ -14,4 +14,6 @@ public interface ChessBoard extends java.io.Serializable
 	public int getHeight();
 	public ChessSquare getChessSquare(int x, int y);
 	public boolean isCheck(Color c);
+	public Color getCurrent();
+	public void setCurrent(Color c);
 }

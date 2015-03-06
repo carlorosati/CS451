@@ -15,6 +15,7 @@ public class Player
 	private Color color;
 	private String name;
 	private List<ChessPiece> pieces;
+	private boolean turn;
 	
 	public Player(Color color, String name)
 	{
@@ -36,5 +37,13 @@ public class Player
 	public void addPieces(ChessPiece piece)
 	{
 		pieces.add(piece);
+	}
+	
+	public void setTurn(boolean turn) {
+		this.turn = turn;
+	}
+	
+	public boolean getTurn() {
+		return turn;
 	}
 }

@@ -30,6 +30,7 @@ public class ConnectionScreen extends JFrame implements ActionListener, MouseLis
 	JTextField portField, hostField;
 	JLabel portLabel, hostLabel;
 	ChessGame game;
+	Socket socket;
 	
 	public ConnectionScreen(){
 		//Creating the GAME UI
@@ -124,7 +125,7 @@ public class ConnectionScreen extends JFrame implements ActionListener, MouseLis
 					JOptionPane.showMessageDialog(this, "Please enter a valid number");
 				}
 				
-				Socket socket = null;
+				socket = null;
 				
 				if(port > 0 && port <= 65535){
 					System.out.println("Connecting to a game with port " + port + " and host name " + hostField.getText());
@@ -140,6 +141,7 @@ public class ConnectionScreen extends JFrame implements ActionListener, MouseLis
 					game.getGUI().setVisible(true);
 					game.SetSocket(socket);
 					this.setVisible(false);
+					game.mainLoop();
 				}
 				
 			}
@@ -175,5 +177,4 @@ public class ConnectionScreen extends JFrame implements ActionListener, MouseLis
 		// TODO Auto-generated method stub
 		
 	}
-
 }

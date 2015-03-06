@@ -23,11 +23,12 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 	
 	//INSTANCE VARIABLES
 	private ChessSquare[][] board;			//Two-dimensional array of chess squares that will make up the board.
-	//TODO:  CREATE A LIST OF CHESS PIECES
+	private Color current;
 	
 	public NormalChessBoard()
 	{
 		board = new ChessSquare[WIDTH][HEIGHT];
+		current= Color.WHITE;
 	}
 
 	@Override
@@ -184,5 +185,12 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 		
 		return false;
 		
+	}
+	
+	public Color getCurrent(){
+		return current;
+	}
+	public void setCurrent(Color c) {
+		current = c;
 	}
 }

@@ -17,6 +17,8 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	private JButton[][] guiBoardButtons;
 	private boolean firstClick = true;
 	private int x,y;
+	private Color me =Color.WHITE;
+	private boolean moved=false;
 	
 	public GUIChessBoard(ChessBoard board)
 	{
@@ -62,9 +64,8 @@ public class GUIChessBoard extends JFrame implements MouseListener
 		}else{
 			System.out.println("Clicked on empty chess square:  (" + x + ", " + y + ")");
 		}
-		
 		if(firstClick){
-			if(pc != null){
+			if(pc != null && pc.getColor()==me && board.getCurrent()==me){
 				firstClick = false;
 				this.x = x;
 				this.y = y;
@@ -77,6 +78,7 @@ public class GUIChessBoard extends JFrame implements MouseListener
 			boolean validMove = origPiece.move(board, x, y);
 			if(validMove){
 				System.out.println(origPiece.getClass().getSimpleName() + " can move to (" + x + ", " + y + ")");
+				moved=true;
 			}else{
 				System.out.println(origPiece.getClass().getSimpleName() + " can't move to (" + x + ", " + y + ")");
 			}
@@ -137,15 +139,17 @@ public class GUIChessBoard extends JFrame implements MouseListener
 
 	}
 	
-	public void update() {
-		for (int i=0; i<8; i++) {
-			for (int j=0; j<8; j++) {
-				if (this.board.getChessSquare(i, j).isEmpty())
-					this.guiBoardButtons[i][j].setIcon(null);
-				else
-					this.guiBoardButtons[i][j].setIcon(this.board.getChessSquare(i, j).getChessPiece().getRepresentation());
-			}
-				
-		}
+	public Color getPlayerColor() {
+		return me;
+	}
+	public void setBoard(ChessBoard b) {
+		board = b;
+		updateBoard();
+	}
+	public boolean getMoved() {
+		return moved;
+	}
+	public void setMoved(boolean b) {
+		moved = b;
 	}
 }
