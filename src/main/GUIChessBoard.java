@@ -17,6 +17,7 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	private JButton[][] guiBoardButtons;
 	private boolean firstClick = true;
 	private int x,y;
+	private Color origBG;
 	
 	public GUIChessBoard(ChessBoard board)
 	{
@@ -68,7 +69,8 @@ public class GUIChessBoard extends JFrame implements MouseListener
 				firstClick = false;
 				this.x = x;
 				this.y = y;
-				
+				origBG = guiBoardButtons[x][y].getBackground();
+				guiBoardButtons[x][y].setBackground(Color.YELLOW);
 				System.out.println("Clicking on first piece");
 			}
 		}else{
@@ -82,6 +84,8 @@ public class GUIChessBoard extends JFrame implements MouseListener
 				System.out.println(origPiece.getClass().getSimpleName() + " can't move to (" + x + ", " + y + ")");
 			}
 			
+			//Update board
+			guiBoardButtons[this.x][this.y].setBackground(origBG);
 			updateBoard();
 		}
 	}
