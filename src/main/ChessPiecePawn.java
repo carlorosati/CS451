@@ -20,6 +20,15 @@ public class ChessPiecePawn extends ChessPiece
 	public ChessPiecePawn(Color color, ImageIcon representation, int x, int y)
 	{
 		super(color, representation, x, y, "P");
+		ImageIcon image;
+		//Used to update piece, based on color and actual piece
+		if (color == Color.BLACK){
+			image = new ImageIcon( getClass().getResource("/resources/ChessPieces/blackPawn.png") );
+			this.representation = image;
+		}else{
+			image = new ImageIcon( getClass().getResource("/resources/ChessPieces/whitePawn.png") );
+			this.representation = image;
+		}
 	}
 	
 	@Override
@@ -37,5 +46,11 @@ public class ChessPiecePawn extends ChessPiece
 			path.add(board.getChessSquare(x, y));
 		
 		return path;
+	}
+	
+	@Override
+	public ImageIcon getRepresentation()
+	{
+		return representation;
 	}
 }

@@ -20,6 +20,15 @@ public class ChessPieceKing extends ChessPiece
 	public ChessPieceKing(Color color, ImageIcon representation, int x, int y)
 	{
 		super(color, representation, x, y, "X");
+		ImageIcon image;
+		//Used to update piece, based on color and actual piece
+		if (color == Color.BLACK){
+			image = new ImageIcon( getClass().getResource("/resources/ChessPieces/blackKing.png") );
+			this.representation = image;
+		}else{
+			image = new ImageIcon( getClass().getResource("/resources/ChessPieces/whiteKing.png") );
+			this.representation = image;
+		}
 	}
 	
 	@Override

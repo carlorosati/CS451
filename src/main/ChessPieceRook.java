@@ -20,6 +20,15 @@ public class ChessPieceRook extends ChessPiece
 	public ChessPieceRook(Color color, ImageIcon representation, int x, int y)
 	{
 		super(color, representation, x, y, "R");
+		ImageIcon image;
+		//Used to update piece, based on color and actual piece
+		if (color == Color.BLACK){
+			image = new ImageIcon( getClass().getResource("/resources/ChessPieces/blackRook.png") );
+			this.representation = image;
+		}else{
+			image = new ImageIcon( getClass().getResource("/resources/ChessPieces/whiteRook.png") );
+			this.representation = image;
+		}
 	}
 	
 	@Override
