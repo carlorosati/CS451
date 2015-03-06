@@ -102,6 +102,7 @@ public class ConnectionScreen extends JFrame implements ActionListener, MouseLis
 					
 					if(clientSocket != null){
 						game.getGUI().setVisible(true);
+						game.getGUI().setMe(Color.WHITE);
 						game.SetSocket(clientSocket);
 						this.setVisible(false);
 						new Thread(game).start();
@@ -140,7 +141,7 @@ public class ConnectionScreen extends JFrame implements ActionListener, MouseLis
 				
 				if(socket != null){
 					game.getGUI().setVisible(true);
-					//game.getGUI().updateBoard();
+					game.getGUI().setMe(Color.BLACK);
 					game.SetSocket(socket);
 					this.setVisible(false);
 					new Thread(game).start();
