@@ -65,8 +65,13 @@ public class GUIChessBoard extends JFrame implements MouseListener
 		}else{
 			System.out.println("Clicked on empty chess square:  (" + x + ", " + y + ")");
 		}
+//		System.out.println("piece color: "+pc.getColor());
+//		System.out.println("player color: " + getPlayerColor());
+//		System.out.println("current:"+board.getCurrent());
+//		System.out.println(moved);
+//		System.out.println(firstClick);
 		if(firstClick){
-			if(pc != null && pc.getColor()==me && board.getCurrent()==me){
+			if(pc != null && pc.getColor()==getPlayerColor() && board.getCurrent()==me){
 				firstClick = false;
 				this.x = x;
 				this.y = y;

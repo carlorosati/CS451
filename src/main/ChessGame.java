@@ -26,10 +26,13 @@ public class ChessGame implements Runnable
 	public void mainLoop()
 	{
 		try {
+			ObjectOutputStream out = new ObjectOutputStream(peerSocket.getOutputStream());
+			out.flush();
+			ObjectInputStream in = new ObjectInputStream(peerSocket.getInputStream());
 			System.out.println("ML called");
 			while(!isOver()){
 				if(chessBoard.getCurrent()==guiChessBoard.getPlayerColor()){
-					System.out.println("your turn");
+					//System.out.println("your turn");
 					if (guiChessBoard.getMoved()){
 						System.out.println("move made");
 						chessBoard.setCurrent(chessBoard.getCurrent()==Color.BLACK?Color.WHITE:Color.BLACK);
@@ -42,6 +45,7 @@ public class ChessGame implements Runnable
 					chessBoard = (ChessBoard) in.readObject();
 					System.out.println("after");
 					guiChessBoard.setBoard(chessBoard);
+					//chessBoard.setCurrent(chessBoard.getCurrent()==Color.BLACK?Color.WHITE:Color.BLACK);
 				}	
 			}
 		}catch(Exception e) {
