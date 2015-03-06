@@ -22,22 +22,26 @@ public class ChessGame
 		chessBoard.initialize(player);
 		guiChessBoard = new GUIChessBoard(chessBoard);
 		peerSocket= null;
-		mainLoop();
 	}
 
 	public void mainLoop()
 	{
 		try {
-			ObjectOutputStream out = new ObjectOutputStream(peerSocket.getOutputStream());
-			ObjectInputStream in = new ObjectInputStream(peerSocket.getInputStream());
+			System.out.println("ML called");
 			while(!isOver()){
 				if(chessBoard.getCurrent()==guiChessBoard.getPlayerColor()){
+					System.out.println("your turn");
 					if (guiChessBoard.getMoved()){
+						System.out.println("move made");
 						chessBoard.setCurrent(chessBoard.getCurrent()==Color.BLACK?Color.WHITE:Color.BLACK);
+						ObjectOutputStream out = new ObjectOutputStream(peerSocket.getOutputStream());
 						out.writeObject(chessBoard);
 					}
 				} else {
+					System.out.println("Waiting for opponent turn");
+					ObjectInputStream in = new ObjectInputStream(peerSocket.getInputStream());
 					chessBoard = (ChessBoard) in.readObject();
+					System.out.println("after");
 					guiChessBoard.setBoard(chessBoard);
 				}	
 			}

@@ -104,6 +104,7 @@ public class ConnectionScreen extends JFrame implements ActionListener, MouseLis
 						game.getGUI().setVisible(true);
 						game.SetSocket(clientSocket);
 						this.setVisible(false);
+						game.mainLoop();
 					}
 				}
 			}
