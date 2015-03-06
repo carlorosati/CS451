@@ -7,8 +7,6 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-import javax.swing.JFrame;
-
 public class ChessGame
 {
 	//INSTANCE VARIABLES	
