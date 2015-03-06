@@ -5,13 +5,10 @@
 package main;
 
 import java.awt.Color;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.Serializable;
 
-import javax.swing.JPanel;
 
-public class ChessSquare extends JPanel implements MouseListener, Serializable
+public class ChessSquare implements Serializable
 {
 	/**
 	 * STANDARD JAVA CONVENTION
@@ -64,36 +61,5 @@ public class ChessSquare extends JPanel implements MouseListener, Serializable
 	public int getPixY()
 	{
 		return pixY;
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e)
-	{
-		int x = e.getX();
-		int y = e.getY();
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e)
-	{
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e)
-	{
-	
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e)
-	{
-	
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e)
-	{
-		
 	}
 }

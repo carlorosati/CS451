@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.io.IOException;
 import java.net.Socket;
 
-import javax.swing.JFrame;
-
 public class ChessGame
 {
 	//INSTANCE VARIABLES	

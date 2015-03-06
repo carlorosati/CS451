@@ -1,6 +1,6 @@
 package main;
 
-import java.awt.Color;
+//import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -42,7 +42,7 @@ public class GUIChessBoard extends JFrame implements MouseListener
 			}
 		}
 
-		setSize(800,800);
+		setSize(500,500);
 	}
 
 	
