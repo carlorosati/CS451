@@ -37,13 +37,13 @@ public class ChessGame implements Runnable
 						System.out.println("move made");
 						chessBoard.setCurrent(chessBoard.getCurrent().equals(Color.BLACK) ? Color.WHITE:Color.BLACK);
 						out.writeObject(chessBoard);
+						guiChessBoard.setMoved(false);
 					}
 				} else {
 					System.out.println("Waiting for opponent turn");
 					chessBoard = (ChessBoard) in.readObject();
 					System.out.println("after");
 					guiChessBoard.setBoard(chessBoard);
-					chessBoard.setCurrent(chessBoard.getCurrent().equals(Color.BLACK)?Color.WHITE:Color.BLACK);
 				}	
 			}
 		}catch(Exception e) {
