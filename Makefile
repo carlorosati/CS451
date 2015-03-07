@@ -8,4 +8,4 @@ default:
 	javac -d $(OUTDIR) -cp $(OUTDIR) -sourcepath $(SRCDIR) src/main/*.java
 
 clean:
-	rm -rf bin/*
+	rm -rf bin/*.class
