@@ -22,7 +22,7 @@ public class ChessPiecePawn extends ChessPiece
 		super(color, representation, x, y, "P");
 		ImageIcon image;
 		//Used to update piece, based on color and actual piece
-		if (color == Color.BLACK){
+		if (color.equals(Color.BLACK)){
 			image = new ImageIcon( getClass().getResource("/resources/ChessPieces/blackPawn.png") );
 			this.representation = image;
 		}else{
@@ -37,11 +37,11 @@ public class ChessPiecePawn extends ChessPiece
 		List<ChessSquare> path = new ArrayList<>();
 		
 		//Check first to see if a pawn is moving diagonal (it is attempting to capture another piece)
-		if (((this.color == Color.WHITE && x == this.x-1 && Math.abs(y - this.y) == 1) || (this.color == Color.BLACK && x == this.x+1 && Math.abs(y - this.y) == 1)) && !board.getChessSquare(x, y).isEmpty())
+		if (((this.color.equals(Color.WHITE) && x == this.x-1 && Math.abs(y - this.y) == 1) || (this.color.equals(Color.BLACK) && x == this.x+1 && Math.abs(y - this.y) == 1)) && !board.getChessSquare(x, y).isEmpty())
 			path.add(board.getChessSquare(x, y));
 		
 		//If pawns are not attempting to capture an enemy piece, check to see if they can only move forward
-		else if (((this.color == Color.WHITE && x == this.x-1 && y == this.y) || (this.color == Color.BLACK && x == this.x+1 && y == this.y)) && board.getChessSquare(x,  y).isEmpty())
+		else if (((this.color.equals(Color.WHITE) && x == this.x-1 && y == this.y) || (this.color.equals(Color.BLACK) && x == this.x+1 && y == this.y)) && board.getChessSquare(x,  y).isEmpty())
 			path.add(board.getChessSquare(x, y));
 		
 		//Check to see if pawn is attempting to capture another piece

@@ -17,8 +17,8 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	private JButton[][] guiBoardButtons;
 	private boolean firstClick = true;
 	private int x,y;
-	private Color me =Color.WHITE;
-	private boolean moved=false;
+	private Color me;;
+	private boolean moved = false;
 	private Color origBG;
 	
 	public GUIChessBoard(ChessBoard board)
@@ -65,8 +65,10 @@ public class GUIChessBoard extends JFrame implements MouseListener
 		}else{
 			System.out.println("Clicked on empty chess square:  (" + x + ", " + y + ")");
 		}
+
 		if(firstClick){
-			if(pc != null && pc.getColor()==me && board.getCurrent()==me){
+			if(pc != null && pc.getColor().equals(me) && board.getCurrent().equals(me)){
+				System.out.println("test!!!");
 				firstClick = false;
 				this.x = x;
 				this.y = y;
@@ -157,5 +159,8 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	}
 	public void setMoved(boolean b) {
 		moved = b;
+	}
+	public void setMe(Color c) {
+		me = c;
 	}
 }

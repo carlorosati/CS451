@@ -93,7 +93,7 @@ public abstract class ChessPiece implements Serializable
 		{
 			if (!square.isEmpty() && square != path.get(path.size() - 1))
 				return false;
-			if (!square.isEmpty() && square.getChessPiece().getColor() == this.color && square == path.get(path.size()-1))
+			if (!square.isEmpty() && square.getChessPiece().getColor().equals(this.color) && square == path.get(path.size()-1))
 				return false;
 		}
 		

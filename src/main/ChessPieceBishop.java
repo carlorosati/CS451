@@ -22,7 +22,7 @@ public class ChessPieceBishop extends ChessPiece
 		super(color, representation, x, y, "B");
 		ImageIcon image;
 		//Used to update piece, based on color and actual piece
-		if (color == Color.BLACK){
+		if (color.equals(Color.BLACK)){
 			image = new ImageIcon( getClass().getResource("/resources/ChessPieces/blackBishop.png") );
 			this.representation = image;
 		}else{
