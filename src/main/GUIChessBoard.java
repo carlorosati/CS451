@@ -37,6 +37,12 @@ public class GUIChessBoard extends JFrame implements MouseListener
 				//Create GUI Representation
 				guiBoardButtons[x][y] = new JButton();
 				guiBoardButtons[x][y].setBackground(sq.getColor());
+
+				// Turn off default button display fill and border
+				guiBoardButtons[x][y].setOpaque(true);
+				guiBoardButtons[x][y].setBorder(BorderFactory.createEmptyBorder());
+				// guiBoardButtons[x][y].setContentAreaFilled(false);
+
 				if(pc != null){
 					guiBoardButtons[x][y].setIcon(pc.getRepresentation());
 				}
