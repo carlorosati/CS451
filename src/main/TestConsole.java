@@ -32,7 +32,7 @@ public class TestConsole
 		Player player = new Player(Color.WHITE, "Chris");
 		board.initialize(player);
 		GUIChessBoard gui = new GUIChessBoard(board);
-		gui.show();
+		gui.setVisible(true);
 		TestConsole.drawBoard(board);
 		gui.updateBoard();
 		

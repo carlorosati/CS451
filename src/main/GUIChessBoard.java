@@ -20,13 +20,13 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	private Color me;;
 	private boolean moved;
 	private Color origBG;
-	
+
 	public GUIChessBoard(ChessBoard board)
 	{
 		this.board = board;
 		this.setLayout(new GridLayout(8,8));
 		moved = false;
-		
+
 		//Prepare guibuttons on board
 		guiBoardButtons = new JButton[8][8];
 		for(int y = 0; y < 8; y++){
@@ -34,7 +34,7 @@ public class GUIChessBoard extends JFrame implements MouseListener
 				//Get internal representation
 				ChessSquare sq = board.getChessSquare(x, y);
 				ChessPiece pc = sq.getChessPiece();
-				
+
 				//Create GUI Representation
 				guiBoardButtons[x][y] = new JButton();
 				guiBoardButtons[x][y].setBackground(sq.getColor());
@@ -55,7 +55,7 @@ public class GUIChessBoard extends JFrame implements MouseListener
 		setSize(500,500);
 	}
 
-	
+
 	/** The logic stored in this method will determine which chess square the user clicked on.  This method uses the x and y values of the user's 
 	 *  last "click" to determine which chess square is accessed.
 	 *  @param value: a coordinate
@@ -63,10 +63,10 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	 */
 	public void processInput(int x, int y)
 	{
-		
+
 		ChessSquare sq = board.getChessSquare(x, y);
 		ChessPiece pc = sq.getChessPiece();
-		
+
 		if(pc != null){
 			System.out.println("Clicked on " + pc.getClass().getSimpleName() + ": (" + x + ", " + y + ")");
 		}else{
@@ -75,7 +75,7 @@ public class GUIChessBoard extends JFrame implements MouseListener
 
 		if(firstClick){
 			if(pc != null && pc.getColor().equals(me) && board.getCurrent().equals(me)&& !moved){
-				System.out.println("test!!!");
+				//System.out.println("test!!!");
 				firstClick = false;
 				this.x = x;
 				this.y = y;
@@ -86,15 +86,20 @@ public class GUIChessBoard extends JFrame implements MouseListener
 		}else{
 			firstClick = true;
 			ChessPiece origPiece = board.getChessSquare(this.x, this.y).getChessPiece();
-			boolean validMove = origPiece.move(board, x, y);
-			if(validMove){
-				System.out.println(origPiece.getClass().getSimpleName() + " can move to (" + x + ", " + y + ")");
-				moved=true;
-			}else{
-				JOptionPane.showMessageDialog(this, "That isn't a valid move!", "Movement Validation", JOptionPane.WARNING_MESSAGE);
-				System.out.println(origPiece.getClass().getSimpleName() + " can't move to (" + x + ", " + y + ")");
+			if (this.x==x && this.y==y){
+				System.out.println("Deselecting piece");
 			}
-			
+			else {
+				boolean validMove = origPiece.move(board, x, y);
+				if(validMove){
+					System.out.println(origPiece.getClass().getSimpleName() + " can move to (" + x + ", " + y + ")");
+					moved=true;
+				}else{
+					JOptionPane.showMessageDialog(this, "That isn't a valid move!", "Movement Validation", JOptionPane.WARNING_MESSAGE);
+					System.out.println(origPiece.getClass().getSimpleName() + " can't move to (" + x + ", " + y + ")");
+				}
+			}
+
 			//Update board
 			guiBoardButtons[this.x][this.y].setBackground(origBG);
 			updateBoard();
@@ -112,14 +117,14 @@ public class GUIChessBoard extends JFrame implements MouseListener
 			}
 		}
 	}
-	
+
 	public void updateBoard(){
 		for(int y = 0; y < 8; y++){
 			for(int x = 0; x < 8; x++){
 				//Get internal representation
 				ChessSquare sq = board.getChessSquare(x, y);
 				ChessPiece pc = sq.getChessPiece();
-				
+
 				//Update external representation
 				if(pc != null){
 					guiBoardButtons[x][y].setIcon(pc.getRepresentation());
@@ -153,7 +158,7 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	{
 
 	}
-	
+
 	public Color getPlayerColor() {
 		return me;
 	}
