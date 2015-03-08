@@ -157,14 +157,14 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 		for(int i=0;i<WIDTH;i++){
 			for(int j=0;j<HEIGHT;j++) {
 				ChessSquare cs = getChessSquare(i, j);
-				if(!cs.isEmpty() && cs.getChessPiece() instanceof ChessPieceKing&& cs.getChessPiece().getColor()==c) {
+				if(!cs.isEmpty() && cs.getChessPiece() instanceof ChessPieceKing&& cs.getChessPiece().getColor().equals(c)) {
 					king = cs.getChessPiece();
 					i=WIDTH;
 					j=HEIGHT;
 				}
 			}
 		}
-		System.out.println("king at ("+king.getX()+","+king.getY()+")");
+		//System.out.println("king at ("+king.getX()+","+king.getY()+")");
 		
 		
 		//loop over opponents pieces and check if they could capture the king
@@ -175,7 +175,7 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 					opponentPiece=cs.getChessPiece();
 					List<ChessSquare> path = opponentPiece.getPath(this, king.getX(), king.getY());
 					if(opponentPiece.validatePath(path, king.getX(), king.getY())) {
-						System.out.println("("+opponentPiece.getX()+","+opponentPiece.getY()+") can take king");	
+						//System.out.println("("+opponentPiece.getX()+","+opponentPiece.getY()+") can take king");	
 						return true;
 					}
 				}
@@ -185,6 +185,33 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 		
 		return false;
 		
+	}
+	
+	public boolean isCheckMate(Color c) {
+		System.out.println("checking checkmate");
+		for(int i=0;i<WIDTH;i++){
+			for(int j=0;j<HEIGHT;j++) {
+				if(!getChessSquare(i, j).isEmpty() && getChessSquare(i, j).getChessPiece().getColor().equals(c)){
+					ChessPiece p = getChessSquare(i,j).getChessPiece();
+					int oldx = p.getX();
+					int oldy = p.getY();
+					for(int x=0; x<WIDTH; x++) {
+						for(int y=0; y<HEIGHT; y++){
+							ChessPiece dest = getChessSquare(x,y).getChessPiece();
+							if (p.move(this, x, y)) {
+								update(p, oldx, oldy);
+								if(dest!=null)
+									update(dest, x, y);
+								return false;
+							}
+
+							
+						}
+					}
+				}
+			}
+		}
+		return true;
 	}
 	
 	public Color getCurrent(){

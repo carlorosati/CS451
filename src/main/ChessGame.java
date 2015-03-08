@@ -13,6 +13,7 @@ public class ChessGame implements Runnable
 	private ChessBoard chessBoard;			//Internal chess board structure
 	private GUIChessBoard guiChessBoard;	//How the chess board will be displayed to the user
 	private Socket peerSocket;
+	private boolean over=false;
 
 	public ChessGame(Color color)
 	{
@@ -39,18 +40,20 @@ public class ChessGame implements Runnable
 						chessBoard.setCurrent(chessBoard.getCurrent().equals(Color.BLACK) ? Color.WHITE:Color.BLACK);
 						out.writeObject(chessBoard);
 						out.flush();
+						over=chessBoard.isCheckMate(chessBoard.getCurrent());
 						guiChessBoard.setMoved(false);
 					}
 				} else {
 					System.out.println("Waiting for opponent turn");
 					chessBoard = (ChessBoard) in.readObject();
-					System.out.println("after");
 					guiChessBoard.setBoard(chessBoard);
-				}	
+					over=chessBoard.isCheckMate(chessBoard.getCurrent());
+				}	 
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("end");
 	}
 
 	public GUIChessBoard getGUI(){
@@ -64,8 +67,9 @@ public class ChessGame implements Runnable
 	/** PROTOTYPE METHOD */
 	public boolean isOver()
 	{
-		return false;
+		return over;
 	}
+	
 
 	public static void main(String[] args) throws IOException
 	{
