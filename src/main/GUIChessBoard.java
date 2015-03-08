@@ -18,13 +18,14 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	private boolean firstClick = true;
 	private int x,y;
 	private Color me;;
-	private boolean moved = false;
+	private boolean moved;
 	private Color origBG;
 	
 	public GUIChessBoard(ChessBoard board)
 	{
 		this.board = board;
 		this.setLayout(new GridLayout(8,8));
+		moved = false;
 		
 		//Prepare guibuttons on board
 		guiBoardButtons = new JButton[8][8];

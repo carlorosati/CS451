@@ -32,11 +32,13 @@ public class ChessGame implements Runnable
 			System.out.println("ML called");
 			while(!isOver()){
 				if(chessBoard.getCurrent().equals(guiChessBoard.getPlayerColor())){
+					Thread.sleep(100);
 					//System.out.println("your turn");
 					if (guiChessBoard.getMoved()){
 						System.out.println("move made");
 						chessBoard.setCurrent(chessBoard.getCurrent().equals(Color.BLACK) ? Color.WHITE:Color.BLACK);
 						out.writeObject(chessBoard);
+						out.flush();
 						guiChessBoard.setMoved(false);
 					}
 				} else {
