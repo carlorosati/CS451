@@ -6,6 +6,7 @@ SRCDIR=src/
 
 default:
 	javac -d $(OUTDIR) -cp $(OUTDIR) -sourcepath $(SRCDIR) src/main/*.java
-
+run:
+	java -cp $(OUTDIR) main.ChessGame
 clean:
 	rm -rf $(OUTDIR)*.class
