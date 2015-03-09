@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
@@ -65,9 +66,11 @@ public class GUIChessBoard extends JFrame implements MouseListener
 		//SETTING UP THE LOWER PANEL OF THE CHESS GAME SCREEN WHICH DISPLAYS PLAYER'S COLOR
 		lowerPanel = new JPanel();
 		lowerPanel.setSize(500, 100);
+		JLabel label = new JLabel("TEST LABEL!!!!!!!!!!!!!!!!!!!!!");
+		lowerPanel.add(label);
 		
 		this.add(chessPanel);
-		this.add(lowerPanel);
+		this.add(lowerPanel, BorderLayout.SOUTH);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
