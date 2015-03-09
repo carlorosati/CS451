@@ -28,7 +28,7 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 	public NormalChessBoard()
 	{
 		board = new ChessSquare[WIDTH][HEIGHT];
-		current= Color.WHITE;
+		current = Color.WHITE;
 	}
 
 	@Override
