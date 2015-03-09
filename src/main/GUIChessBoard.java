@@ -25,7 +25,7 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	{
 		this.board = board;
 		this.setTitle("CHESS GAME SOFTWARE");
-		this.setLayout(new GridLayout(8,8));
+		this.setLayout(new GridLayout(8, 8));
 		moved = false;
 
 		//Prepare guibuttons on board
@@ -48,12 +48,13 @@ public class GUIChessBoard extends JFrame implements MouseListener
 				if(pc != null){
 					guiBoardButtons[x][y].setIcon(pc.getRepresentation());
 				}
+				
 				guiBoardButtons[x][y].addMouseListener(this);
 				add(guiBoardButtons[x][y]);
 			}
 		}
 
-		setSize(500,500);
+		this.setSize(500, 500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
