@@ -17,9 +17,14 @@ public class ChessPiecePawn extends ChessPiece
 	 */
 	private static final long serialVersionUID = 1L;
 
+	
+	//Boolean variable representing whether or not the pawn has made its first move or not
+	private boolean firstMove;
+	
 	public ChessPiecePawn(Color color, ImageIcon representation, int x, int y)
 	{
 		super(color, representation, x, y, "P");
+		firstMove = true;
 		ImageIcon image;
 		//Used to update piece, based on color and actual piece
 		if (color.equals(Color.BLACK)){
@@ -36,8 +41,15 @@ public class ChessPiecePawn extends ChessPiece
 	{
 		List<ChessSquare> path = new ArrayList<ChessSquare>();
 		
+		//Check to see if this is the first move of the game
+		if (firstMove && (this.x == 1 || this.x == 6) && Math.abs(x - this.x) == 2)
+		{
+			path.add(board.getChessSquare(x, y));
+			firstMove = false;
+		}
+		
 		//Check first to see if a pawn is moving diagonal (it is attempting to capture another piece)
-		if (((this.color.equals(Color.WHITE) && x == this.x-1 && Math.abs(y - this.y) == 1) || (this.color.equals(Color.BLACK) && x == this.x+1 && Math.abs(y - this.y) == 1)) && !board.getChessSquare(x, y).isEmpty())
+		else if (((this.color.equals(Color.WHITE) && x == this.x-1 && Math.abs(y - this.y) == 1) || (this.color.equals(Color.BLACK) && x == this.x+1 && Math.abs(y - this.y) == 1)) && !board.getChessSquare(x, y).isEmpty())
 			path.add(board.getChessSquare(x, y));
 		
 		//If pawns are not attempting to capture an enemy piece, check to see if they can only move forward

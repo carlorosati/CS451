@@ -212,10 +212,13 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 		return true;
 	}
 	
-	public Color getCurrent(){
+	public Color getCurrent()
+	{
 		return current;
 	}
-	public void setCurrent(Color c) {
+	
+	public void setCurrent(Color c)
+	{
 		current = c;
 	}
 }

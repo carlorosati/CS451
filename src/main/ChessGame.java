@@ -93,7 +93,7 @@ public class ChessGame implements Runnable
 	{
 		return over;
 	}
-	
+
 
 	public static void main(String[] args) throws IOException
 	{
@@ -105,5 +105,29 @@ public class ChessGame implements Runnable
 	public void run()
 	{
 		mainLoop();
+	}
+	public void promotion(Color c) {
+		ChessPiece p;
+		if (c.equals(Color.WHITE)){
+			for(int i=0;i<8;i++) {
+				p = chessBoard.getChessSquare(0, i).getChessPiece();
+				if(p!=null && p instanceof ChessPiecePawn){
+					//get selection from gui
+					//make new piece
+					//update board
+				}
+
+			}
+		}
+		else {
+			for(int i=0;i<8;i++) {
+				p = chessBoard.getChessSquare(7, i).getChessPiece();
+				if(p!=null && p instanceof ChessPiecePawn){
+					//get selection from gui
+					//make new piece
+					//update board
+				}
+			}
+		}
 	}
 }
