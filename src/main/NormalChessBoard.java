@@ -157,7 +157,7 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 		for(int i=0;i<WIDTH;i++){
 			for(int j=0;j<HEIGHT;j++) {
 				ChessSquare cs = getChessSquare(i, j);
-				if(!cs.isEmpty() && cs.getChessPiece() instanceof ChessPieceKing&& cs.getChessPiece().getColor().equals(c)) {
+				if(!cs.isEmpty() && cs.getChessPiece() instanceof ChessPieceKing && cs.getChessPiece().getColor().equals(c)) {
 					king = cs.getChessPiece();
 					i=WIDTH;
 					j=HEIGHT;
@@ -204,8 +204,6 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 									update(dest, x, y);
 								return false;
 							}
-
-							
 						}
 					}
 				}

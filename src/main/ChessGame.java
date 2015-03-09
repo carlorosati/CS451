@@ -31,14 +31,22 @@ public class ChessGame implements Runnable
 			ObjectOutputStream out = new ObjectOutputStream(peerSocket.getOutputStream());
 			out.flush();
 			ObjectInputStream in = new ObjectInputStream(peerSocket.getInputStream());
-			System.out.println("ML called");
+			// System.out.println("ML called");
 			while(!isOver()){
 				if(chessBoard.getCurrent().equals(guiChessBoard.getPlayerColor())){
 					Thread.sleep(100);
 					//System.out.println("your turn");
 					if (guiChessBoard.getMoved()){
 						System.out.println("move made");
-						chessBoard.setCurrent(chessBoard.getCurrent().equals(Color.BLACK) ? Color.WHITE:Color.BLACK);
+
+						// Before we send the board check for pawn promotion
+						
+
+						chessBoard.setCurrent(
+							chessBoard.getCurrent().equals(Color.BLACK)
+							? Color.WHITE
+							: Color.BLACK
+						);
 						out.writeObject(chessBoard);
 						out.flush();
 						over=chessBoard.isCheckMate(chessBoard.getCurrent());
