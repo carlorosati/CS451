@@ -21,7 +21,7 @@ public class Player
 	{
 		this.color = color;
 		this.name = name;
-		this.pieces = new ArrayList<>();
+		this.pieces = new ArrayList<ChessPiece>();
 	}
 	
 	public Color getColor()

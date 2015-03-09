@@ -42,10 +42,12 @@ public class ConnectionScreen extends JFrame implements ActionListener, MouseLis
 		
 		JLabel chessLabel = new JLabel("Chess Game", JLabel.CENTER);
 		chessLabel.setFont(new Font("Serif", Font.PLAIN, 24));
+		this.setTitle("CHESS GAME SOFTWARE");
 		this.add(chessLabel, BorderLayout.NORTH);
 		this.add(createGame, BorderLayout.WEST);
 		this.add(connectToGame, BorderLayout.EAST);
 		this.setSize(new Dimension(500,200));
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//Creating elements of panel that will be shown
 		portLabel = new JLabel("Port Number");

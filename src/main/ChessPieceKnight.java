@@ -43,7 +43,7 @@ public class ChessPieceKnight extends ChessPiece
 	@Override
 	public List<ChessSquare> getPath(ChessBoard board, int x, int y)
 	{
-		List<ChessSquare> path = new ArrayList<>();
+		List<ChessSquare> path = new ArrayList<ChessSquare>();
 		
 		if (this.x != x && this.y != y && Math.abs(this.x -x) + Math.abs(this.y - y) == 3)
 			path.add(board.getChessSquare(x, y));

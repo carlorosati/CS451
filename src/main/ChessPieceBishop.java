@@ -34,7 +34,7 @@ public class ChessPieceBishop extends ChessPiece
 	@Override
 	public List<ChessSquare> getPath(ChessBoard board, int x, int y)
 	{
-		List<ChessSquare> path = new ArrayList<>();
+		List<ChessSquare> path = new ArrayList<ChessSquare>();
 		
 		if (Math.abs(this.x - x) == Math.abs(this.y - y))
 		{
