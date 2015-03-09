@@ -175,4 +175,14 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	public void setMe(Color c) {
 		me = c;
 	}
+	public void showVictory(){
+		JOptionPane.showMessageDialog(this, "You won.", "Checkmate", JOptionPane.INFORMATION_MESSAGE);
+	}
+	public void showLoss(){
+		JOptionPane.showMessageDialog(this, "You lost.", "Checkmate", JOptionPane.INFORMATION_MESSAGE);
+	}
+	public void showCheck() {
+		JOptionPane.showMessageDialog(this, "You are in check.", "Check", JOptionPane.INFORMATION_MESSAGE);
+	}
 }
+

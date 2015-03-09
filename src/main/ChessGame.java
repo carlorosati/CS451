@@ -41,13 +41,22 @@ public class ChessGame implements Runnable
 						out.writeObject(chessBoard);
 						out.flush();
 						over=chessBoard.isCheckMate(chessBoard.getCurrent());
-						guiChessBoard.setMoved(false);
+						if(over) {
+							guiChessBoard.showVictory();
+						}
 					}
 				} else {
 					System.out.println("Waiting for opponent turn");
 					chessBoard = (ChessBoard) in.readObject();
 					guiChessBoard.setBoard(chessBoard);
 					over=chessBoard.isCheckMate(chessBoard.getCurrent());
+					if(over) {
+						guiChessBoard.showLoss();
+					}
+					else if(chessBoard.isCheck(chessBoard.getCurrent())){
+						guiChessBoard.showCheck();
+					}
+					guiChessBoard.setMoved(false);
 				}	 
 			}
 		}catch(Exception e) {
