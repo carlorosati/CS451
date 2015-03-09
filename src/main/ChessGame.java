@@ -124,24 +124,27 @@ public class ChessGame implements Runnable
 			}
 		}
 		
-		switch(selection) {
-		case "Queen":
-			newp= new ChessPieceQueen(p.getColor(),null,p.getX(),p.getY());
-			break;
-		case "Rook":
-			newp= new ChessPieceRook(p.getColor(),null,p.getX(),p.getY());
-			break;
-		case "Bishop":
-			newp= new ChessPieceBishop(p.getColor(),null,p.getX(),p.getY());
-			break;
-		case "Knight":
-			newp= new ChessPieceKnight(p.getColor(),null,p.getX(),p.getY());
-			break;
-		default:
-			selection="";
-			break;
+		switch(selection)
+		{
+			case "Queen":
+				newp= new ChessPieceQueen(p.getColor(),null,p.getX(),p.getY());
+				break;
+			case "Rook":
+				newp= new ChessPieceRook(p.getColor(),null,p.getX(),p.getY());
+				break;
+			case "Bishop":
+				newp= new ChessPieceBishop(p.getColor(),null,p.getX(),p.getY());
+				break;
+			case "Knight":
+				newp= new ChessPieceKnight(p.getColor(),null,p.getX(),p.getY());
+				break;
+			default:
+				selection="";
+				break;
 		}
-		if (!selection.equals("")){
+		
+		if (!selection.equals(""))
+		{
 			chessBoard.update(newp, p.getX(), p.getY());
 			guiChessBoard.updateBoard();
 		}

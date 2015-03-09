@@ -143,11 +143,14 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	public String promotion()
 	{
 		Object[] possibilities = {"Bishop", "Knight", "Queen", "Rook"};
-		String s = (String) JOptionPane.showInputDialog(null, "Select a piece for promotion\nfrom the list below", "Input", JOptionPane.INFORMATION_MESSAGE, null, possibilities, possibilities[0]);
+		String s = null;
 		
-		if ((s != null) && (s.length() > 0))
-			return s;
-		return null;
+		do
+		{
+			s = (String) JOptionPane.showInputDialog(null, "Select a piece for promotion\nfrom the list below", "Input", JOptionPane.INFORMATION_MESSAGE, null, possibilities, possibilities[0]);
+		} while (s == null);
+		
+		return s;
 	}
 
 	@Override
