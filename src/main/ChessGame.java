@@ -70,11 +70,13 @@ public class ChessGame implements Runnable
 		System.out.println("end");
 	}
 
-	public GUIChessBoard getGUI(){
+	public GUIChessBoard getGUI()
+	{
 		return guiChessBoard;
 	}
 
-	public void SetSocket(Socket newSocket){
+	public void SetSocket(Socket newSocket)
+	{
 		peerSocket = newSocket;
 	}
 
@@ -89,13 +91,11 @@ public class ChessGame implements Runnable
 	{
 		ConnectionScreen myScreen = new ConnectionScreen();
 		myScreen.setVisible(true);
-		//		ChessGame var = new ChessGame(Color.white);
-		//		var.getGUI().setVisible(true);
-		//Player p = new Player(Color.BLACK, "Dude");
 	}
 
 	@Override
-	public void run() {
+	public void run()
+	{
 		mainLoop();
 	}
 }

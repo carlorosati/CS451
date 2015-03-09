@@ -53,6 +53,7 @@ public class GUIChessBoard extends JFrame implements MouseListener
 		}
 
 		setSize(500,500);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 
