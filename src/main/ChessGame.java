@@ -100,26 +100,32 @@ public class ChessGame implements Runnable
 	}
 	public void promotion(Color c) {
 		ChessPiece p;
+		ChessPiece newp;
+		String selection = "";
 		if (c.equals(Color.WHITE)){
 			for(int i=0;i<8;i++) {
 				p = chessBoard.getChessSquare(0, i).getChessPiece();
 				if(p!=null && p instanceof ChessPiecePawn){
-					//get selection from gui
-					//make new piece
-					//update board
+					selection = guiChessBoard.promotion();
+					break;
 				}
-
 			}
 		}
 		else {
 			for(int i=0;i<8;i++) {
 				p = chessBoard.getChessSquare(7, i).getChessPiece();
 				if(p!=null && p instanceof ChessPiecePawn){
-					//get selection from gui
-					//make new piece
-					//update board
+					selection = guiChessBoard.promotion();
+					break;
 				}
 			}
 		}
+		
+		switch(selection) {
+		case "Queen":
+			newp= new ChessPieceQueen(p.getColor(),null,p.getX(),p.getY());
+			break;
+		}
+		
 	}
 }
