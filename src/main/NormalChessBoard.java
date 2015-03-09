@@ -24,13 +24,11 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 	//INSTANCE VARIABLES
 	private ChessSquare[][] board;			//Two-dimensional array of chess squares that will make up the board.
 	private Color current;
-	private boolean firstMove;				//Boolean representing if the first move has been made or not
 	
 	public NormalChessBoard()
 	{
 		board = new ChessSquare[WIDTH][HEIGHT];
 		current = Color.WHITE;
-		firstMove = true;
 	}
 
 	@Override
@@ -159,7 +157,7 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 		for(int i=0;i<WIDTH;i++){
 			for(int j=0;j<HEIGHT;j++) {
 				ChessSquare cs = getChessSquare(i, j);
-				if(!cs.isEmpty() && cs.getChessPiece() instanceof ChessPieceKing&& cs.getChessPiece().getColor().equals(c)) {
+				if(!cs.isEmpty() && cs.getChessPiece() instanceof ChessPieceKing && cs.getChessPiece().getColor().equals(c)) {
 					king = cs.getChessPiece();
 					i=WIDTH;
 					j=HEIGHT;
@@ -206,8 +204,6 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 									update(dest, x, y);
 								return false;
 							}
-
-							
 						}
 					}
 				}
@@ -216,22 +212,13 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 		return true;
 	}
 	
-	public Color getCurrent(){
+	public Color getCurrent()
+	{
 		return current;
 	}
-	public void setCurrent(Color c) {
+	
+	public void setCurrent(Color c)
+	{
 		current = c;
-	}
-	
-	@Override
-	public boolean ifFirstMove()
-	{
-		return firstMove;
-	}
-	
-	@Override
-	public void setFirstMove(boolean value)
-	{
-		firstMove = value;
 	}
 }
