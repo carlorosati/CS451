@@ -154,4 +154,28 @@ public class ChessPieceKingTests {
 		Assert.assertEquals(King, board.getChessSquare(0,3).getChessPiece());
 	}
 	
+	@Test
+	public void KingCannotMoveToLocationIfWouldPutPlayerInCheck(){
+		ChessPiece King = board.getChessSquare(0,3).getChessPiece();
+		
+		//Check that the piece is a King
+		Assert.assertEquals(King.getClass(), ChessPieceKing.class);
+		
+		//Add pawn to (2,2)
+		ChessPiece pawn = new ChessPiecePawn(Color.WHITE, new ImageIcon(),2,2);
+		board.getChessSquare(2, 2).setChessPiece(pawn);
+		Assert.assertNotNull(pawn);
+		Assert.assertNotSame(pawn.getColor(), King.getColor());
+		
+		boolean canMove = King.move(board, 1, 3);
+		
+		//Check that the piece can't move
+		Assert.assertFalse(canMove);
+		
+		//Check that the piece position is the same
+		Assert.assertEquals(King.getX(), 0);
+		Assert.assertEquals(King.getY(), 3);
+		Assert.assertEquals(King, board.getChessSquare(0,3).getChessPiece());
+	}
+	
 }
