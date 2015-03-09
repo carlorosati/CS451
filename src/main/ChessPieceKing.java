@@ -34,7 +34,7 @@ public class ChessPieceKing extends ChessPiece
 	@Override
 	public List<ChessSquare> getPath(ChessBoard board, int x, int y)
 	{
-		List<ChessSquare> path = new ArrayList<>();
+		List<ChessSquare> path = new ArrayList<ChessSquare>();
 		
 		//Kings can only move one square adjacent to their current position at a time
 		if (Math.abs(this.x - x) <=1 && Math.abs(this.y - y) <= 1)

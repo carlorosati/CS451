@@ -34,7 +34,7 @@ public class ChessPiecePawn extends ChessPiece
 	@Override
 	public List<ChessSquare> getPath(ChessBoard board, int x, int y)
 	{
-		List<ChessSquare> path = new ArrayList<>();
+		List<ChessSquare> path = new ArrayList<ChessSquare>();
 		
 		//Check first to see if a pawn is moving diagonal (it is attempting to capture another piece)
 		if (((this.color.equals(Color.WHITE) && x == this.x-1 && Math.abs(y - this.y) == 1) || (this.color.equals(Color.BLACK) && x == this.x+1 && Math.abs(y - this.y) == 1)) && !board.getChessSquare(x, y).isEmpty())

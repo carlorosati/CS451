@@ -34,7 +34,7 @@ public class ChessPieceQueen extends ChessPiece
 	@Override
 	public List<ChessSquare> getPath(ChessBoard board, int x, int y)
 	{
-		List<ChessSquare> path = new ArrayList<>();
+		List<ChessSquare> path = new ArrayList<ChessSquare>();
 
 		//Queens behave as rooks and bishops
 		//CHECK TO SEE IF QUEEN MOVED IN ROOK MOTION
