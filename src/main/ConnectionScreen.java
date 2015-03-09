@@ -46,6 +46,7 @@ public class ConnectionScreen extends JFrame implements ActionListener, MouseLis
 		this.add(createGame, BorderLayout.WEST);
 		this.add(connectToGame, BorderLayout.EAST);
 		this.setSize(new Dimension(500,200));
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//Creating elements of panel that will be shown
 		portLabel = new JLabel("Port Number");
