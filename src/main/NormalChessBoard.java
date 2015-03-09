@@ -72,10 +72,10 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 		ChessPiece bk2 = new ChessPieceKnight(Color.BLACK, new ImageIcon(), 0, 6);
 		update(bk2, bk2.getX(), bk2.getY());
 		
-		ChessPiece bking = new ChessPieceKing(Color.BLACK, new ImageIcon(), 0, 4);
+		ChessPiece bking = new ChessPieceKing(Color.BLACK, new ImageIcon(), 0, 3);
 		update(bking, bking.getX(), bking.getY());
 		
-		ChessPiece bq = new ChessPieceQueen(Color.BLACK, new ImageIcon(), 0, 3);
+		ChessPiece bq = new ChessPieceQueen(Color.BLACK, new ImageIcon(), 0, 4);
 		update(bq, bq.getX(), bq.getY());
 		
 		//white pieces

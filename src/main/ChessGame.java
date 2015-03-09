@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 
 public class ChessGame implements Runnable
 {
@@ -59,7 +60,11 @@ public class ChessGame implements Runnable
 					guiChessBoard.setMoved(false);
 				}	 
 			}
-		}catch(Exception e) {
+		}catch(SocketException e) {
+			over = true;
+			guiChessBoard.showDisconnected();
+		}
+		catch(Exception e) {
 			e.printStackTrace();
 		}
 		System.out.println("end");
