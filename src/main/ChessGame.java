@@ -109,7 +109,6 @@ public class ChessGame implements Runnable
 			for(int i=0;i<8;i++) {
 				p = chessBoard.getChessSquare(0, i).getChessPiece();
 				if(p!=null && p instanceof ChessPiecePawn){
-					System.out.println("White pawn");
 					selection = guiChessBoard.promotion();
 					break;
 				}
@@ -119,7 +118,6 @@ public class ChessGame implements Runnable
 			for(int i=0;i<8;i++) {
 				p = chessBoard.getChessSquare(7, i).getChessPiece();
 				if(p!=null && p instanceof ChessPiecePawn){
-					selection = guiChessBoard.promotion();
 					selection = guiChessBoard.promotion();
 					break;
 				}
