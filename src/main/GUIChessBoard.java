@@ -20,12 +20,16 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	private Color me;;
 	private boolean moved;
 	private Color origBG;
+	
+	private JPanel chessPanel;		//Panel containing the chess grid
+	private JPanel lowerPanel;		//Panel containing status bar
 
 	public GUIChessBoard(ChessBoard board)
 	{
 		this.board = board;
+		chessPanel = new JPanel();
 		this.setTitle("CHESS GAME SOFTWARE");
-		this.setLayout(new GridLayout(8, 8));
+		chessPanel.setLayout(new GridLayout(8, 8));
 		moved = false;
 
 		//Prepare guibuttons on board
@@ -50,11 +54,21 @@ public class GUIChessBoard extends JFrame implements MouseListener
 				}
 				
 				guiBoardButtons[x][y].addMouseListener(this);
-				add(guiBoardButtons[x][y]);
+				chessPanel.add(guiBoardButtons[x][y]);
 			}
 		}
 
-		this.setSize(500, 500);
+		chessPanel.setSize(500, 500);
+		chessPanel.setBorder(BorderFactory.createRaisedSoftBevelBorder());
+		this.setSize(506, 600);
+		
+		//SETTING UP THE LOWER PANEL OF THE CHESS GAME SCREEN WHICH DISPLAYS PLAYER'S COLOR
+		lowerPanel = new JPanel();
+		lowerPanel.setSize(500, 100);
+		
+		this.add(chessPanel);
+		this.add(lowerPanel);
+		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
