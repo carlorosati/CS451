@@ -38,7 +38,7 @@ public class ChessGame implements Runnable
 					//System.out.println("your turn");
 					if (guiChessBoard.getMoved()){
 						System.out.println("move made");
-
+						promotion(chessBoard.getCurrent());
 						// Before we send the board check for pawn promotion
 						
 
@@ -102,13 +102,14 @@ public class ChessGame implements Runnable
 	
 	public void promotion(Color c)
 	{
-		ChessPiece p;
-		ChessPiece newp;
+		ChessPiece p = null;
+		ChessPiece newp = null;
 		String selection = "";
 		if (c.equals(Color.WHITE)){
 			for(int i=0;i<8;i++) {
 				p = chessBoard.getChessSquare(0, i).getChessPiece();
 				if(p!=null && p instanceof ChessPiecePawn){
+					System.out.println("White pawn");
 					selection = guiChessBoard.promotion();
 					break;
 				}
@@ -119,6 +120,7 @@ public class ChessGame implements Runnable
 				p = chessBoard.getChessSquare(7, i).getChessPiece();
 				if(p!=null && p instanceof ChessPiecePawn){
 					selection = guiChessBoard.promotion();
+					selection = guiChessBoard.promotion();
 					break;
 				}
 			}
@@ -128,6 +130,22 @@ public class ChessGame implements Runnable
 		case "Queen":
 			newp= new ChessPieceQueen(p.getColor(),null,p.getX(),p.getY());
 			break;
+		case "Rook":
+			newp= new ChessPieceRook(p.getColor(),null,p.getX(),p.getY());
+			break;
+		case "Bishop":
+			newp= new ChessPieceBishop(p.getColor(),null,p.getX(),p.getY());
+			break;
+		case "Knight":
+			newp= new ChessPieceKnight(p.getColor(),null,p.getX(),p.getY());
+			break;
+		default:
+			selection="";
+			break;
+		}
+		if (!selection.equals("")){
+			chessBoard.update(newp, p.getX(), p.getY());
+			guiChessBoard.updateBoard();
 		}
 		
 	}

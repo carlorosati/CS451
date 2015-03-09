@@ -50,28 +50,28 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 		
 		//INITIALIZE PIECES
 		//black pieces
-		for(int i=0;i<8;i++){
+		for(int i=0;i<2;i++){
 			ChessPiece bp = new ChessPiecePawn(Color.BLACK, new ImageIcon(), 1, i);
 			update(bp, bp.getX(), bp.getY());
 		}
-		ChessPiece br1 = new ChessPieceRook(Color.BLACK, new ImageIcon(), 0, 0);
-		update(br1, br1.getX(), br1.getY());
-		
-		ChessPiece br2 = new ChessPieceRook(Color.BLACK, new ImageIcon(), 0, 7);
-		update(br2, br2.getX(), br2.getY());
-		
-		ChessPiece bb1 = new ChessPieceBishop(Color.BLACK, new ImageIcon(), 0, 2);
-		update(bb1, bb1.getX(), bb1.getY());
-		
-		ChessPiece bb2 = new ChessPieceBishop(Color.BLACK, new ImageIcon(), 0, 5);
-		update(bb2, bb2.getX(), bb2.getY());
-		
-		ChessPiece bk1 = new ChessPieceKnight(Color.BLACK, new ImageIcon(), 0, 1);
-		update(bk1, bk1.getX(), bk1.getY());
-		
-		ChessPiece bk2 = new ChessPieceKnight(Color.BLACK, new ImageIcon(), 0, 6);
-		update(bk2, bk2.getX(), bk2.getY());
-		
+//		ChessPiece br1 = new ChessPieceRook(Color.BLACK, new ImageIcon(), 0, 0);
+//		update(br1, br1.getX(), br1.getY());
+//		
+//		ChessPiece br2 = new ChessPieceRook(Color.BLACK, new ImageIcon(), 0, 7);
+//		update(br2, br2.getX(), br2.getY());
+//		
+//		ChessPiece bb1 = new ChessPieceBishop(Color.BLACK, new ImageIcon(), 0, 2);
+//		update(bb1, bb1.getX(), bb1.getY());
+//		
+//		ChessPiece bb2 = new ChessPieceBishop(Color.BLACK, new ImageIcon(), 0, 5);
+//		update(bb2, bb2.getX(), bb2.getY());
+//		
+//		ChessPiece bk1 = new ChessPieceKnight(Color.BLACK, new ImageIcon(), 0, 1);
+//		update(bk1, bk1.getX(), bk1.getY());
+//		
+//		ChessPiece bk2 = new ChessPieceKnight(Color.BLACK, new ImageIcon(), 0, 6);
+//		update(bk2, bk2.getX(), bk2.getY());
+//		
 		ChessPiece bking = new ChessPieceKing(Color.BLACK, new ImageIcon(), 0, 3);
 		update(bking, bking.getX(), bking.getY());
 		
@@ -79,28 +79,28 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 		update(bq, bq.getX(), bq.getY());
 		
 		//white pieces
-		for(int i=0;i<8;i++){
+		for(int i=6;i<8;i++){
 			ChessPiece wp = new ChessPiecePawn(Color.WHITE, new ImageIcon(), 6, i);
 			update(wp, wp.getX(), wp.getY());
 		}
-		ChessPiece wr1 = new ChessPieceRook(Color.WHITE, new ImageIcon(), 7, 0);
-		update(wr1, wr1.getX(), wr1.getY());
-		
-		ChessPiece wr2 = new ChessPieceRook(Color.WHITE, new ImageIcon(), 7, 7);
-		update(wr2, wr2.getX(), wr2.getY());
-		
-		ChessPiece wb1 = new ChessPieceBishop(Color.WHITE, new ImageIcon(), 7, 2);
-		update(wb1, wb1.getX(), wb1.getY());
-		
-		ChessPiece wb2 = new ChessPieceBishop(Color.WHITE, new ImageIcon(), 7, 5);
-		update(wb2, wb2.getX(), wb2.getY());
-		
-		ChessPiece wk1 = new ChessPieceKnight(Color.WHITE, new ImageIcon(), 7, 1);
-		update(wk1, wk1.getX(), wk1.getY());
-		
-		ChessPiece wk2 = new ChessPieceKnight(Color.WHITE, new ImageIcon(), 7, 6);
-		update(wk2, wk2.getX(), wk2.getY());
-		
+//		ChessPiece wr1 = new ChessPieceRook(Color.WHITE, new ImageIcon(), 7, 0);
+//		update(wr1, wr1.getX(), wr1.getY());
+//		
+//		ChessPiece wr2 = new ChessPieceRook(Color.WHITE, new ImageIcon(), 7, 7);
+//		update(wr2, wr2.getX(), wr2.getY());
+//		
+//		ChessPiece wb1 = new ChessPieceBishop(Color.WHITE, new ImageIcon(), 7, 2);
+//		update(wb1, wb1.getX(), wb1.getY());
+//		
+//		ChessPiece wb2 = new ChessPieceBishop(Color.WHITE, new ImageIcon(), 7, 5);
+//		update(wb2, wb2.getX(), wb2.getY());
+//		
+//		ChessPiece wk1 = new ChessPieceKnight(Color.WHITE, new ImageIcon(), 7, 1);
+//		update(wk1, wk1.getX(), wk1.getY());
+//		
+//		ChessPiece wk2 = new ChessPieceKnight(Color.WHITE, new ImageIcon(), 7, 6);
+//		update(wk2, wk2.getX(), wk2.getY());
+//		
 		ChessPiece wking = new ChessPieceKing(Color.WHITE, new ImageIcon(), 7, 3);
 		update(wking, wking.getX(), wking.getY());
 		
