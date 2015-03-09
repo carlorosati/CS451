@@ -17,6 +17,4 @@ public interface ChessBoard extends java.io.Serializable
 	public Color getCurrent();
 	public void setCurrent(Color c);
 	public boolean isCheckMate(Color c);
-	public boolean ifFirstMove();
-	public void setFirstMove(boolean value);
 }
