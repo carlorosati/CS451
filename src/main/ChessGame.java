@@ -14,7 +14,7 @@ public class ChessGame implements Runnable
 	private ChessBoard chessBoard;			//Internal chess board structure
 	private GUIChessBoard guiChessBoard;	//How the chess board will be displayed to the user
 	private Socket peerSocket;
-	private boolean over=false;
+	private boolean over=false;				//Boolean variable representing whether or not the game has ended (by victory or by early termination)
 
 	public ChessGame(Color color)
 	{
@@ -86,19 +86,14 @@ public class ChessGame implements Runnable
 		return over;
 	}
 
-
-	public static void main(String[] args) throws IOException
-	{
-		ConnectionScreen myScreen = new ConnectionScreen();
-		myScreen.setVisible(true);
-	}
-
 	@Override
 	public void run()
 	{
 		mainLoop();
 	}
-	public void promotion(Color c) {
+	
+	public void promotion(Color c)
+	{
 		ChessPiece p;
 		if (c.equals(Color.WHITE)){
 			for(int i=0;i<8;i++) {
@@ -121,5 +116,12 @@ public class ChessGame implements Runnable
 				}
 			}
 		}
+	}
+	
+	//MAIN
+	public static void main(String[] args) throws IOException
+	{
+		ConnectionScreen myScreen = new ConnectionScreen();
+		myScreen.setVisible(true);
 	}
 }

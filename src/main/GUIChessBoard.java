@@ -24,6 +24,7 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	public GUIChessBoard(ChessBoard board)
 	{
 		this.board = board;
+		this.setTitle("CHESS GAME SOFTWARE");
 		this.setLayout(new GridLayout(8,8));
 		moved = false;
 
@@ -119,9 +120,12 @@ public class GUIChessBoard extends JFrame implements MouseListener
 		}
 	}
 
-	public void updateBoard(){
-		for(int y = 0; y < 8; y++){
-			for(int x = 0; x < 8; x++){
+	public void updateBoard()
+	{
+		for(int y = 0; y < 8; y++)
+		{
+			for(int x = 0; x < 8; x++)
+			{
 				//Get internal representation
 				ChessSquare sq = board.getChessSquare(x, y);
 				ChessPiece pc = sq.getChessPiece();
@@ -134,6 +138,16 @@ public class GUIChessBoard extends JFrame implements MouseListener
 				}
 			}
 		}
+	}
+	
+	public String promotion()
+	{
+		Object[] possibilities = {"Bishop", "Knight", "Queen", "Rook"};
+		String s = (String) JOptionPane.showInputDialog(null, "Select a piece for promotion\nfrom the list below", "Input", JOptionPane.INFORMATION_MESSAGE, null, possibilities, possibilities[0]);
+		
+		if ((s != null) && (s.length() > 0))
+			return s;
+		return null;
 	}
 
 	@Override
