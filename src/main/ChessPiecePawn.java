@@ -18,13 +18,10 @@ public class ChessPiecePawn extends ChessPiece
 	private static final long serialVersionUID = 1L;
 
 	
-	//Boolean variable representing whether or not the pawn has made its first move or not
-	private boolean firstMove;
 	
 	public ChessPiecePawn(Color color, ImageIcon representation, int x, int y)
 	{
 		super(color, representation, x, y, "P");
-		firstMove = true;
 		ImageIcon image;
 		//Used to update piece, based on color and actual piece
 		if (color.equals(Color.BLACK)){
