@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.Color;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -85,6 +86,10 @@ public class ChessGame implements Runnable
 			}
 			//handle opponent disconnect
 		}catch(SocketException e) {
+			over = true;
+			guiChessBoard.showDisconnected();
+		}
+		catch(EOFException e) {
 			over = true;
 			guiChessBoard.showDisconnected();
 		}
