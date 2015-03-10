@@ -42,10 +42,15 @@ public class ChessPiecePawn extends ChessPiece
 		List<ChessSquare> path = new ArrayList<ChessSquare>();
 		
 		//Check to see if this is the first move of the game
-		if (firstMove && (this.x == 1 || this.x == 6) && Math.abs(x - this.x) == 2)
+		if (this.x == 1 && this.getColor().equals(Color.BLACK) && x - this.x == 2 && board.getChessSquare(x, y).isEmpty())
 		{
+			path.add(board.getChessSquare(x+1, y));
 			path.add(board.getChessSquare(x, y));
-			firstMove = false;
+		}
+		else if (this.x == 6 && this.getColor().equals(Color.WHITE) && this.x - x == 2 &&board.getChessSquare(x, y).isEmpty())
+		{
+			path.add(board.getChessSquare(x-1, y));
+			path.add(board.getChessSquare(x, y));
 		}
 		
 		//Check first to see if a pawn is moving diagonal (it is attempting to capture another piece)
