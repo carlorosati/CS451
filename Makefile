@@ -13,7 +13,7 @@ run: compile
 	java -cp $(OUTDIR):$(IMGDIR) $(PKGNAM).$(TARGET)
 
 clean:
-	rm -rf $(OUTDIR)*.class $(TARGET).jar manifest.mf
+	rm -rf $(OUTDIR)/* $(TARGET).jar manifest.mf
 
 jar: compile
 	echo "Main-Class: $(PKGNAM).$(TARGET)" > manifest.mf
