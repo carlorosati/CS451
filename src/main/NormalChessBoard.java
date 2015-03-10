@@ -156,6 +156,7 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 		//TODO: implement cloning of the board
 		return cb;
 	}
+	
 	public boolean isCheck(Color c) {
 		ChessPiece king = null;
 		ChessPiece opponentPiece=null;
@@ -164,6 +165,7 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 				ChessSquare cs = getChessSquare(i, j);
 				if(!cs.isEmpty() && cs.getChessPiece() instanceof ChessPieceKing && cs.getChessPiece().getColor().equals(c)) {
 					king = cs.getChessPiece();
+					//This is being done to break out of both for loops
 					i=WIDTH;
 					j=HEIGHT;
 				}
