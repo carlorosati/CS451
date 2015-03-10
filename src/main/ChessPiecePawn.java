@@ -44,12 +44,12 @@ public class ChessPiecePawn extends ChessPiece
 		//Check to see if this is the first move of the game
 		if (this.x == 1 && this.getColor().equals(Color.BLACK) && x - this.x == 2 && board.getChessSquare(x, y).isEmpty())
 		{
-			path.add(board.getChessSquare(x+1, y));
+			path.add(board.getChessSquare(x-1, y));
 			path.add(board.getChessSquare(x, y));
 		}
 		else if (this.x == 6 && this.getColor().equals(Color.WHITE) && this.x - x == 2 &&board.getChessSquare(x, y).isEmpty())
 		{
-			path.add(board.getChessSquare(x-1, y));
+			path.add(board.getChessSquare(x+1, y));
 			path.add(board.getChessSquare(x, y));
 		}
 		
