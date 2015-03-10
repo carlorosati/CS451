@@ -1,14 +1,24 @@
+TARGET=ChessGame
+PKGNAM=main
 OUTDIR=bin
 SRCDIR=src
-PKGNAM=main
 IMGDIR=$(SRCDIR)/$(PKGNAM)
 
-# How to run:
-# java -classpath $(OUTDIR) package.Classname
+.PHONY: compile run clean jar runjar
 
 compile:
 	javac -d $(OUTDIR) -cp $(OUTDIR) -sourcepath $(SRCDIR) src/main/*.java
+
 run: compile
-	java -cp $(OUTDIR):$(IMGDIR) $(PKGNAM).ChessGame
+	java -cp $(OUTDIR):$(IMGDIR) $(PKGNAM).$(TARGET)
+
 clean:
-	rm -rf $(OUTDIR)*.class
+	rm -rf $(OUTDIR)*.class $(TARGET).jar manifest.mf
+
+jar: compile
+	echo "Main-Class: $(PKGNAM).$(TARGET)" > manifest.mf
+	echo "Class-Path: $(IMGDIR)" >> manifest.mf
+	jar cmvf manifest.mf $(TARGET).jar -C $(OUTDIR) . -C $(IMGDIR) .
+
+runjar: jar
+	java -jar $(TARGET).jar
