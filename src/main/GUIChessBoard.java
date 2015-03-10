@@ -115,11 +115,6 @@ public class GUIChessBoard extends JFrame implements MouseListener
 				if(validMove){
 					System.out.println(origPiece.getClass().getSimpleName() + " can move to (" + x + ", " + y + ")");
 					moved=true;
-					if(this.me == Color.BLACK){
-						label.setText("Status: Your Opponent's Turn (White)");
-					}else{
-						label.setText("Status: Your Opponent's Turn (Black)");
-					}
 				}else{
 					JOptionPane.showMessageDialog(this, "That isn't a valid move!", "Movement Validation", JOptionPane.WARNING_MESSAGE);
 					System.out.println(origPiece.getClass().getSimpleName() + " can't move to (" + x + ", " + y + ")");
@@ -238,7 +233,8 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	}
 	
 	public void setStatus(String status){
-		label.setText(status);
+		String color = board.getCurrent().equals(Color.BLACK)?"Black":"White";
+		label.setText(status+" ("+color+")");
 	}
 }
 

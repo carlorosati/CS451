@@ -27,6 +27,8 @@ public class ChessGame implements Runnable
 
 	public void mainLoop()
 	{
+		if(chessBoard.getCurrent().equals(guiChessBoard.getPlayerColor()))
+			guiChessBoard.setStatus("Status: It is your turn.");
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(peerSocket.getOutputStream());
 			out.flush();
@@ -35,7 +37,6 @@ public class ChessGame implements Runnable
 			while(!isOver()){
 				if(chessBoard.getCurrent().equals(guiChessBoard.getPlayerColor())){
 					Thread.sleep(100);
-					guiChessBoard.setStatus("Status: It is your turn.");
 					//System.out.println("your turn");
 					if (guiChessBoard.getMoved()){
 						System.out.println("move made");
@@ -56,6 +57,7 @@ public class ChessGame implements Runnable
 						}
 					}
 				} else {
+					guiChessBoard.setStatus("Status: Your Opponent's Turn.");
 					System.out.println("Waiting for opponent turn");
 					chessBoard = (ChessBoard) in.readObject();
 					guiChessBoard.setBoard(chessBoard);
@@ -67,6 +69,7 @@ public class ChessGame implements Runnable
 						guiChessBoard.showCheck();
 					}
 					guiChessBoard.setMoved(false);
+					guiChessBoard.setStatus("Status: It is your turn.");
 				}	 
 			}
 		}catch(SocketException e) {
