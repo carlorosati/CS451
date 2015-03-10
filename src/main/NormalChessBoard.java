@@ -30,9 +30,9 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 		board = new ChessSquare[WIDTH][HEIGHT];
 		current = Color.WHITE;
 	}
-
+	
 	@Override
-	public void initialize(Player player)
+	public void initialize()
 	{
 		int turn = 0;
 		//INITIALIZE BOARD

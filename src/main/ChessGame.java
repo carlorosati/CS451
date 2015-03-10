@@ -11,7 +11,6 @@ import java.net.SocketException;
 public class ChessGame implements Runnable
 {
 	//INSTANCE VARIABLES	
-	private Player player;					//Variable representing the player object
 	private ChessBoard chessBoard;			//Internal chess board structure
 	private GUIChessBoard guiChessBoard;	//How the chess board will be displayed to the user
 	private Socket peerSocket;
@@ -19,9 +18,8 @@ public class ChessGame implements Runnable
 
 	public ChessGame(Color color)
 	{
-		player = new Player(color, "Chris");
 		chessBoard = new NormalChessBoard();
-		chessBoard.initialize(player);
+		chessBoard.initialize();
 		guiChessBoard = new GUIChessBoard(chessBoard);
 		peerSocket= null;
 	}

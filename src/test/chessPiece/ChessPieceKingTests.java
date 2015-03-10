@@ -24,7 +24,7 @@ public class ChessPieceKingTests {
 	@Before
 	public void ResetBoard(){
 		//Set up board
-		board.initialize(null);
+		board.initialize();
 		
 		//Get rid of pawns
 		for(int y = 0; y < 8; y++){

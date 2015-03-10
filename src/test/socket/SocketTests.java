@@ -34,7 +34,7 @@ public class SocketTests {
 		}
 		
 		board = new NormalChessBoard();
-		board.initialize(null);
+		board.initialize();
 	}
 	
 	public void SetSocket(Socket sock){

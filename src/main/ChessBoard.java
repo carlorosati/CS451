@@ -8,7 +8,7 @@ import java.awt.Color;
 
 public interface ChessBoard extends java.io.Serializable
 {
-	public void initialize(Player player);
+	public void initialize();
 	public void update(ChessPiece piece, int x, int y);
 	public int getWidth();
 	public int getHeight();

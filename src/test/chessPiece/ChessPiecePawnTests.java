@@ -24,7 +24,7 @@ public class ChessPiecePawnTests {
 	@Before
 	public void ResetBoard(){
 		//Set up board
-		board.initialize(null);
+		board.initialize();
 	}
 	
 	@Test
