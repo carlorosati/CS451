@@ -130,6 +130,7 @@ public class NormalChessBoard implements ChessBoard, Cloneable, Serializable
 		board[x][y].setChessPiece(piece);
 		
 		piece.updatePosition(x, y);
+		
 	}
 	
 	@Override

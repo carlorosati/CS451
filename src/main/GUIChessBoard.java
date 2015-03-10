@@ -18,10 +18,11 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	private JButton[][] guiBoardButtons;
 	private boolean firstClick = true;
 	private int x,y;
-	private Color me;;
+	private Color me;
 	private boolean moved;
 	private Color origBG;
-	
+
+	private JLabel label;			//Label with text saying status
 	private JPanel chessPanel;		//Panel containing the chess grid
 	private JPanel lowerPanel;		//Panel containing status bar
 
@@ -32,6 +33,7 @@ public class GUIChessBoard extends JFrame implements MouseListener
 		this.setTitle("CHESS GAME SOFTWARE");
 		chessPanel.setLayout(new GridLayout(8, 8));
 		moved = false;
+		JLabel label;
 
 		//Prepare guibuttons on board
 		guiBoardButtons = new JButton[8][8];
@@ -66,7 +68,7 @@ public class GUIChessBoard extends JFrame implements MouseListener
 		//SETTING UP THE LOWER PANEL OF THE CHESS GAME SCREEN WHICH DISPLAYS PLAYER'S COLOR
 		lowerPanel = new JPanel();
 		lowerPanel.setSize(500, 100);
-		JLabel label = new JLabel("TEST LABEL!!!!!!!!!!!!!!!!!!!!!");
+		label = new JLabel("Status: The game is beginning!");
 		lowerPanel.add(label);
 		
 		this.add(chessPanel);
@@ -114,6 +116,11 @@ public class GUIChessBoard extends JFrame implements MouseListener
 				if(validMove){
 					System.out.println(origPiece.getClass().getSimpleName() + " can move to (" + x + ", " + y + ")");
 					moved=true;
+					if(this.me == Color.BLACK){
+						label.setText("Status: Your Opponent's Turn (White)");
+					}else{
+						label.setText("Status: Your Opponent's Turn (Black)");
+					}
 				}else{
 					JOptionPane.showMessageDialog(this, "That isn't a valid move!", "Movement Validation", JOptionPane.WARNING_MESSAGE);
 					System.out.println(origPiece.getClass().getSimpleName() + " can't move to (" + x + ", " + y + ")");
@@ -212,19 +219,27 @@ public class GUIChessBoard extends JFrame implements MouseListener
 		me = c;
 	}
 	public void showVictory(){
+		label.setText("Status: You have won!");
 		JOptionPane.showMessageDialog(this, "You won.", "Checkmate", JOptionPane.INFORMATION_MESSAGE);
 		System.exit(0);
 	}
 	public void showLoss(){
+		label.setText("Status: You have lost.");
 		JOptionPane.showMessageDialog(this, "You lost.", "Checkmate", JOptionPane.INFORMATION_MESSAGE);
 		System.exit(0);
 	}
 	public void showCheck() {
+		label.setText("Status: It is your turn and you are in check!");
 		JOptionPane.showMessageDialog(this, "You are in check.", "Check", JOptionPane.INFORMATION_MESSAGE);
 	}
 	public void showDisconnected(){
+		label.setText("Status: Other player disconnected!");
 		JOptionPane.showMessageDialog(this, "Your opponent has left. You won.", "Opponent quit", JOptionPane.INFORMATION_MESSAGE);
 		System.exit(0);
+	}
+	
+	public void setStatus(String status){
+		label.setText(status);
 	}
 }
 

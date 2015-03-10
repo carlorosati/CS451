@@ -35,6 +35,7 @@ public class ChessGame implements Runnable
 			while(!isOver()){
 				if(chessBoard.getCurrent().equals(guiChessBoard.getPlayerColor())){
 					Thread.sleep(100);
+					guiChessBoard.setStatus("Status: It is your turn.");
 					//System.out.println("your turn");
 					if (guiChessBoard.getMoved()){
 						System.out.println("move made");
