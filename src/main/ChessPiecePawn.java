@@ -17,8 +17,6 @@ public class ChessPiecePawn extends ChessPiece
 	 */
 	private static final long serialVersionUID = 1L;
 
-	
-	
 	public ChessPiecePawn(Color color, ImageIcon representation, int x, int y)
 	{
 		super(color, representation, x, y, "P");
@@ -38,7 +36,7 @@ public class ChessPiecePawn extends ChessPiece
 	{
 		List<ChessSquare> path = new ArrayList<ChessSquare>();
 		
-		//Check to see if this is the first move of the game
+		//Check to see if this is the pawn's first move
 		if (this.x == 1 && this.getColor().equals(Color.BLACK) && x - this.x == 2 && board.getChessSquare(x, y).isEmpty())
 		{
 			path.add(board.getChessSquare(x-1, y));

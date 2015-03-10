@@ -117,7 +117,7 @@ public class ConnectionScreen extends JFrame implements ActionListener, MouseLis
 			hostLabel.setVisible(true);
 			hostField.setVisible(true);
 			
-			int op = JOptionPane.showConfirmDialog(null, gamePanel, "Create a Game", JOptionPane.OK_CANCEL_OPTION);
+			int op = JOptionPane.showConfirmDialog(null, gamePanel, "Connect to a Game", JOptionPane.OK_CANCEL_OPTION);
 			
 			if(op == JOptionPane.OK_OPTION){
 				int port = -1;
