@@ -21,4 +21,4 @@ runjar: jar
 	java -jar $(TARGET).jar
 
 clean:
-	rm -rf $(OUTDIR)*.class $(TARGET).jar manifest.mf
+	rm -rf $(OUTDIR)/* $(TARGET).jar manifest.mf
