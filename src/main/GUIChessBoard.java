@@ -33,7 +33,6 @@ public class GUIChessBoard extends JFrame implements MouseListener
 		this.setTitle("CHESS GAME SOFTWARE");
 		chessPanel.setLayout(new GridLayout(8, 8));
 		moved = false;
-		JLabel label;
 
 		//Prepare guibuttons on board
 		guiBoardButtons = new JButton[8][8];
