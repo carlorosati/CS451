@@ -4,16 +4,13 @@ OUTDIR=bin
 SRCDIR=src
 IMGDIR=$(SRCDIR)/$(PKGNAM)
 
-.PHONY: compile run clean jar runjar
+.PHONY: compile run jar runjar clean
 
 compile:
 	javac -d $(OUTDIR) -cp $(OUTDIR) -sourcepath $(SRCDIR) src/main/*.java
 
 run: compile
 	java -cp $(OUTDIR):$(IMGDIR) $(PKGNAM).$(TARGET)
-
-clean:
-	rm -rf $(OUTDIR)*.class $(TARGET).jar manifest.mf
 
 jar: compile
 	echo "Main-Class: $(PKGNAM).$(TARGET)" > manifest.mf
@@ -22,3 +19,6 @@ jar: compile
 
 runjar: jar
 	java -jar $(TARGET).jar
+
+clean:
+	rm -rf $(OUTDIR)*.class $(TARGET).jar manifest.mf
