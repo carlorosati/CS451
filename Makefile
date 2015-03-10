@@ -4,7 +4,7 @@ OUTDIR=bin
 SRCDIR=src
 IMGDIR=$(SRCDIR)/$(PKGNAM)
 
-.PHONY: compile run clean jar runjar
+.PHONY: compile run jar runjar clean
 
 compile:
 	javac -d $(OUTDIR) -cp $(OUTDIR) -sourcepath $(SRCDIR) src/main/*.java
