@@ -122,6 +122,7 @@ public abstract class ChessPiece implements Serializable
 		int oldx = getX();
 		int oldy = getY();
 		List<ChessSquare> path = getPath(board, x, y);
+		System.out.println("VALIDATE PATH:  " + validatePath(path, x, y));
 		if (validatePath(path, x, y))
 		{
 			ChessPiece p = board.getChessSquare(x, y).getChessPiece();
