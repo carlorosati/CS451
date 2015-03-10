@@ -25,6 +25,7 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	private JLabel label;			//Label with text saying status
 	private JPanel chessPanel;		//Panel containing the chess grid
 	private JPanel lowerPanel;		//Panel containing status bar
+	private JLabel upperPanel;
 
 	public GUIChessBoard(ChessBoard board)
 	{
@@ -63,6 +64,10 @@ public class GUIChessBoard extends JFrame implements MouseListener
 		chessPanel.setSize(500, 500);
 		chessPanel.setBorder(BorderFactory.createRaisedSoftBevelBorder());
 		this.setSize(506, 600);
+
+		// Add the upper panel showing player's color
+		upperPanel = new JLabel();
+		this.add(upperPanel, BorderLayout.NORTH);
 		
 		//SETTING UP THE LOWER PANEL OF THE CHESS GAME SCREEN WHICH DISPLAYS PLAYER'S COLOR
 		lowerPanel = new JPanel();
@@ -211,6 +216,7 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	}
 	public void setMe(Color c) {
 		me = c;
+		upperPanel.setText("You are "+(me.equals(Color.BLACK)?"Black":"White"));
 	}
 	public void showVictory(){
 		label.setText("Status: You have won!");
