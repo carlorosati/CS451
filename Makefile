@@ -1,5 +1,7 @@
-OUTDIR=bin/
-SRCDIR=src/
+OUTDIR=bin
+SRCDIR=src
+PKGNAM=main
+IMGDIR=$(SRCDIR)/$(PKGNAM)
 
 # How to run:
 # java -classpath $(OUTDIR) package.Classname
@@ -7,6 +9,6 @@ SRCDIR=src/
 compile:
 	javac -d $(OUTDIR) -cp $(OUTDIR) -sourcepath $(SRCDIR) src/main/*.java
 run: compile
-	java -cp $(OUTDIR) main.ChessGame
+	java -cp $(OUTDIR):$(IMGDIR) $(PKGNAM).ChessGame
 clean:
 	rm -rf $(OUTDIR)*.class
