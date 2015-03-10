@@ -216,7 +216,7 @@ public class GUIChessBoard extends JFrame implements MouseListener
 	}
 	public void setMe(Color c) {
 		me = c;
-		upperPanel.setText("You are "+(me.equals(Color.BLACK)?"Black":"White"));
+		upperPanel.setText("Build 1.2 | You are "+(me.equals(Color.BLACK)?"Black":"White"));
 	}
 	public void showVictory(){
 		label.setText("Status: You have won!");
