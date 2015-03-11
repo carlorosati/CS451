@@ -7,6 +7,7 @@ IMGDIR=$(SRCDIR)/$(PKGNAM)
 .PHONY: compile run jar runjar clean
 
 compile:
+	mkdir -p $(OUTDIR)
 	javac -d $(OUTDIR) -cp $(OUTDIR) -sourcepath $(SRCDIR) src/main/*.java
 
 run: compile
