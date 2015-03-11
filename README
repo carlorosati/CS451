@@ -1,0 +1,20 @@
+CS 451 - Final Project
+
+-- Group Members
+
+Michael Irizarry
+Josh Bauer
+Chris Khedoo
+Vincent Engard
+
+-- How to make executable
+
+Run the following command:
+
+make jar
+
+-- How to run
+
+Run the following command:
+
+make runjar
