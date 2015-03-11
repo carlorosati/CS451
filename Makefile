@@ -12,9 +12,6 @@ compile:
 run: compile
 	java -cp $(OUTDIR):$(IMGDIR) $(PKGNAM).$(TARGET)
 
-clean:
-	rm -rf $(OUTDIR)/* $(TARGET).jar manifest.mf
-
 jar: compile
 	echo "Main-Class: $(PKGNAM).$(TARGET)" > manifest.mf
 	echo "Class-Path: $(IMGDIR)" >> manifest.mf
@@ -22,9 +19,6 @@ jar: compile
 
 runjar: jar
 	java -jar $(TARGET).jar
-<<<<<<< HEAD
 
 clean:
 	rm -rf $(OUTDIR)/* $(TARGET).jar manifest.mf
-=======
->>>>>>> 8e9fbb681d2689a8aabbaf7683424d148c41cbbe
